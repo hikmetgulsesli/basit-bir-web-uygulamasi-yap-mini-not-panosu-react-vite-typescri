@@ -84,7 +84,7 @@ export function AnaEkranDashboard(props: AnaEkranDashboardProps) {
       <img alt="Kullanıcı Profili" className="w-full h-full object-cover" data-alt="A close-up, professional portrait of a business person in a modern, dark-themed office environment. The lighting is soft and cinematic, emphasizing a professional and focused mood. The color palette leans heavily into deep slates, subtle blues, and warm skin tones, perfectly matching a high-end corporate SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8XjcJixC6xhYVYAFwtPatYEty7LMh-A--K_BqXQNdtDuPiuLs3zl6C3OQ-IrRB-1kaIksrzynywYav8J12MnS7QbQCfCPL-O8VcMpxlmtHpRFKVNIk_Pbwm6Yxz9WdK-o30y1yuL9hr2Hv4y2zex6bVXkToDo680qW_TdbqciEhvkeymDgLNrDJgcFqrylJ4Fxb3sQ6EgTCqF1-OqMNWxFTFgR2SnEKYJ2VqpUxns_PYBdmlSXQWQmznxvArW_4kitNyPVGdAosM4" />
       </div>
       <div>
-      <h2 className="text-slate-50 font-semibold">Profesyonel Panel</h2>
+      <div className="text-slate-50 font-semibold">Profesyonel Panel</div>
       <p className="text-slate-400 text-xs">Not Yönetimi</p>
       </div>
       </div>
@@ -165,7 +165,7 @@ export function AnaEkranDashboard(props: AnaEkranDashboardProps) {
       <input className="h-10 bg-surface-container-high border border-outline-variant rounded-md pl-10 pr-4 text-sm text-on-surface placeholder:text-slate-500 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-64" placeholder="Notlarda ara..." type="text" value={searchQuery} onChange={(e) => onSearchChange(e.target.value)} />
       </div>
       <div className="flex items-center gap-2">
-      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors" aria-label="Bildirimler">
+      <button className="text-slate-400 opacity-50 cursor-not-allowed p-2 rounded-full" aria-label="Bildirimler" disabled title="Bildirimler (yakında)">
       <span className="material-symbols-outlined">notifications</span>
       </button>
       <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors hidden md:block" aria-label="Profil" onClick={onOpenProfile}>
