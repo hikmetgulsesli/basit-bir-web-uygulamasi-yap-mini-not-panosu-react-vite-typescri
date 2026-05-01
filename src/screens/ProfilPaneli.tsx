@@ -45,7 +45,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       <aside className="fixed right-0 top-0 h-screen w-80 bg-surface-container border-l border-outline-variant shadow-[-10px_0_15px_-3px_rgba(0,0,0,0.5)] z-50 flex flex-col transform translate-x-0 transition-transform duration-300 ease-in-out">
       {/* Header */}
       <div className="flex items-center justify-between p-lg border-b border-outline-variant">
-      <h2 className="font-h3 text-h3 text-on-surface">Profil</h2>
+      <h1 className="font-h3 text-h3 text-on-surface">Profil</h1>
       <button aria-label="Kapat" className="w-touch-target h-touch-target flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container" onClick={onClose}>
       <span className="material-symbols-outlined text-on-surface-variant">close</span>
       </button>
@@ -56,7 +56,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       <div className="flex flex-col items-center gap-md text-center mt-md">
       <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-container-highest relative">
       <img alt="Kullanıcı Profili" className="w-full h-full object-cover" src={userProfile.avatarUrl} />
-      <button className="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-colors" title="Fotoğrafı Değiştir">
+      <button className="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-colors" title="Fotoğrafı Değiştir" disabled aria-label="Fotoğrafı Değiştir">
       <span className="material-symbols-outlined text-[16px] text-on-surface-variant">edit</span>
       </button>
       </div>
