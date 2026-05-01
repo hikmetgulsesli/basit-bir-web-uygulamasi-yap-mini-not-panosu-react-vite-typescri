@@ -64,10 +64,10 @@ export function NotDetayi(props: NotDetayiProps) {
               </div>
       <div className="flex items-center gap-unit font-inter text-sm font-medium tracking-tight">
       {/* Supressed main links to prioritize detail view on mobile, keeping actions */}
-      <button className="w-touch-target h-touch-target flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors hover:bg-slate-900/50 rounded-full active:scale-95 duration-200" disabled aria-label="Bildirimler" title="Bildirimler (yakında)">
+      <button className="w-touch-target h-touch-target flex items-center justify-center text-slate-400 opacity-50 cursor-not-allowed rounded-full" disabled aria-label="Bildirimler" title="Bildirimler (yakında)">
       <span className="material-symbols-outlined">notifications</span>
       </button>
-      <button className="w-touch-target h-touch-target flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors hover:bg-slate-900/50 rounded-full active:scale-95 duration-200" disabled aria-label="Profil" title="Profil (yakında)">
+      <button className="w-touch-target h-touch-target flex items-center justify-center text-slate-400 opacity-50 cursor-not-allowed rounded-full" disabled aria-label="Profil" title="Profil (yakında)">
       <span className="material-symbols-outlined">account_circle</span>
       </button>
       </div>

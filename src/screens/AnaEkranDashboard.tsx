@@ -97,7 +97,7 @@ export function AnaEkranDashboard(props: AnaEkranDashboardProps) {
       <div className="flex-1 overflow-y-auto py-2">
       <ul className="space-y-1 px-2">
       <li>
-      <a className="bg-blue-600/10 text-blue-300 border-r-4 border-blue-600 font-semibold px-4 py-3 flex items-center gap-3 rounded-l-md cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
+      <a className="bg-blue-600/10 text-blue-500 border-r-4 border-blue-600 font-semibold px-4 py-3 flex items-center gap-3 rounded-l-md cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined">description</span>
                               Notlarım
                           </a>
@@ -165,7 +165,7 @@ export function AnaEkranDashboard(props: AnaEkranDashboardProps) {
       <input className="h-10 bg-surface-container-high border border-outline-variant rounded-md pl-10 pr-4 text-sm text-on-surface placeholder:text-slate-500 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-64" placeholder="Notlarda ara..." type="text" value={searchQuery} onChange={(e) => onSearchChange(e.target.value)} />
       </div>
       <div className="flex items-center gap-2">
-      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors" aria-label="Bildirimler" disabled title="Bildirimler (yakında)">
+      <button className="text-slate-400 opacity-50 cursor-not-allowed p-2 rounded-full" aria-label="Bildirimler" disabled title="Bildirimler (yakında)">
       <span className="material-symbols-outlined">notifications</span>
       </button>
       <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors hidden md:block" aria-label="Profil" onClick={onOpenProfile}>

@@ -56,7 +56,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       <div className="flex flex-col items-center gap-md text-center mt-md">
       <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-container-highest relative">
       <img alt="Kullanıcı Profili" className="w-full h-full object-cover" src={userProfile.avatarUrl} />
-      <button className="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-colors" title="Fotoğrafı Değiştir" disabled aria-label="Fotoğrafı Değiştir">
+      <button className="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center opacity-50 cursor-not-allowed" title="Fotoğrafı Değiştir" disabled aria-label="Fotoğrafı Değiştir">
       <span className="material-symbols-outlined text-[16px] text-on-surface-variant">edit</span>
       </button>
       </div>
