@@ -4,7 +4,7 @@ export interface TodoItem {
   completed: boolean;
 }
 
-export type NoteCategory = 'work' | 'personal' | 'ideas' | string;
+export type NoteCategory = 'work' | 'personal' | 'ideas' | (string & {});
 
 export interface Note {
   id: string;

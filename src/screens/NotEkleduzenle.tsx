@@ -51,7 +51,7 @@ export function NotEkleduzenle(props: NotEkleduzenleProps) {
 
   const addTodo = () => {
     if (!newTodoText.trim()) return;
-    setTodos([...todos, { id: `${Date.now()}-${Math.random()}`, text: newTodoText, completed: false }]);
+    setTodos([...todos, { id: crypto.randomUUID(), text: newTodoText, completed: false }]);
     setNewTodoText("");
   };
 

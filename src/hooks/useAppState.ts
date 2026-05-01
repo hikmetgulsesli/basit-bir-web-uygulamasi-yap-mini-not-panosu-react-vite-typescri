@@ -3,7 +3,7 @@ import type { Note, TodoItem, AppState, View, FilterTab, AppPreferences } from '
 import { loadState, saveState } from '../utils/storage';
 
 function generateId(): string {
-  return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  return crypto.randomUUID();
 }
 
 const now = () => new Date().toISOString();
