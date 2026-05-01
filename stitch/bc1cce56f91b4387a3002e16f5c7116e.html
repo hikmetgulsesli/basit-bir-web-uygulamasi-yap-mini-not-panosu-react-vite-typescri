@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hata Durumu - Mini Not Panosu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#32343d",
+                    "error": "#ffb4ab",
+                    "background": "#11131b",
+                    "surface-container-high": "#282a32",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "tertiary-container": "#bc4800",
+                    "on-background": "#e1e2ed",
+                    "on-surface": "#e1e2ed",
+                    "secondary-fixed-dim": "#b9c7df",
+                    "on-tertiary": "#581e00",
+                    "on-surface-variant": "#c3c6d7",
+                    "on-secondary-fixed-variant": "#3a485b",
+                    "outline-variant": "#434655",
+                    "error-container": "#93000a",
+                    "surface-tint": "#b4c5ff",
+                    "tertiary": "#ffb596",
+                    "surface-bright": "#373942",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "surface-dim": "#11131b",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container-low": "#191b23",
+                    "on-primary-fixed": "#00174b",
+                    "on-primary": "#002a78",
+                    "primary": "#b4c5ff",
+                    "inverse-on-surface": "#2e3039",
+                    "on-error": "#690005",
+                    "primary-container": "#2563eb",
+                    "on-secondary": "#233144",
+                    "outline": "#8d90a0",
+                    "on-secondary-container": "#abb9d1",
+                    "secondary-container": "#3c4a5e",
+                    "surface": "#11131b",
+                    "on-tertiary-fixed": "#360f00",
+                    "surface-variant": "#32343d",
+                    "on-tertiary-container": "#ffede6",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-container": "#1d1f27",
+                    "secondary": "#b9c7df",
+                    "inverse-surface": "#e1e2ed",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "inverse-primary": "#0053db",
+                    "on-secondary-fixed": "#0d1c2e",
+                    "surface-container-lowest": "#0c0e16",
+                    "secondary-fixed": "#d5e3fc",
+                    "on-primary-container": "#eeefff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "unit": "8px",
+                    "touch-target": "44px",
+                    "2xl": "48px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "margin": "24px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "h1": ["Inter"],
+                    "h3": ["Inter"],
+                    "h2": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex items-center justify-center p-md">
+<!-- Error State Canvas -->
+<main class="w-full max-w-[600px] flex flex-col items-center justify-center text-center space-y-xl">
+<!-- Error Icon/Visual -->
+<div class="relative flex items-center justify-center w-24 h-24 mb-md">
+<div class="absolute inset-0 bg-error-container rounded-full opacity-20 animate-pulse"></div>
+<div class="absolute inset-2 bg-error-container rounded-full opacity-40"></div>
+<span class="material-symbols-outlined text-[64px] text-error relative z-10" style="font-variation-settings: 'FILL' 1;">
+                error
+            </span>
+</div>
+<!-- Typography Cluster -->
+<div class="space-y-sm max-w-[480px]">
+<h1 class="font-h1 text-h1 text-on-surface">
+                Bir Sorun Oluştu
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Veriler yüklenirken sunucu ile iletişim kurulamadı. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.
+            </p>
+</div>
+<!-- Technical Detail (Optional context for pro users) -->
+<div class="bg-surface-container rounded-lg p-md w-full border border-outline-variant text-left">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs uppercase tracking-wider">Hata Detayı</p>
+<code class="font-mono text-[13px] text-error block truncate">
+                ERR_CONNECTION_REFUSED: Failed to fetch API endpoint
+            </code>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-md w-full sm:w-auto mt-xl">
+<button class="h-touch-target px-lg bg-primary-container text-on-primary-container font-label-md text-label-md rounded-DEFAULT hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-sm active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+                Tekrar Dene
+            </button>
+<button class="h-touch-target px-lg border border-outline-variant text-on-surface font-label-md text-label-md rounded-DEFAULT hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-sm active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+                Destek Al
+            </button>
+</div>
+</main>
+</body></html>

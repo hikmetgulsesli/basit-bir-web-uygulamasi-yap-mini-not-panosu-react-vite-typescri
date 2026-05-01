@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mini Not Panosu - Boş Durum</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#32343d",
+                        "error": "#ffb4ab",
+                        "background": "#11131b",
+                        "surface-container-high": "#282a32",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-container": "#bc4800",
+                        "on-background": "#e1e2ed",
+                        "on-surface": "#e1e2ed",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "on-tertiary": "#581e00",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "outline-variant": "#434655",
+                        "error-container": "#93000a",
+                        "surface-tint": "#b4c5ff",
+                        "tertiary": "#ffb596",
+                        "surface-bright": "#373942",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-dim": "#11131b",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-low": "#191b23",
+                        "on-primary-fixed": "#00174b",
+                        "on-primary": "#002a78",
+                        "primary": "#b4c5ff",
+                        "inverse-on-surface": "#2e3039",
+                        "on-error": "#690005",
+                        "primary-container": "#2563eb",
+                        "on-secondary": "#233144",
+                        "outline": "#8d90a0",
+                        "on-secondary-container": "#abb9d1",
+                        "secondary-container": "#3c4a5e",
+                        "surface": "#11131b",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-variant": "#32343d",
+                        "on-tertiary-container": "#ffede6",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container": "#1d1f27",
+                        "secondary": "#b9c7df",
+                        "inverse-surface": "#e1e2ed",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-primary": "#0053db",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "surface-container-lowest": "#0c0e16",
+                        "secondary-fixed": "#d5e3fc",
+                        "on-primary-container": "#eeefff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "md": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "unit": "8px",
+                        "touch-target": "44px",
+                        "2xl": "48px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "margin": "24px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "h3": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    fontSize: {
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "h1": ["30px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "h3": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "h2": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-hidden antialiased">
+<nav class="fixed top-0 w-full flex items-center justify-between px-6 h-16 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+<div class="flex items-center gap-4">
+<span class="text-lg font-bold tracking-tighter text-slate-50">Mini Not Panosu</span>
+</div>
+<ul class="hidden md:flex items-center h-full gap-8 font-inter text-sm font-medium tracking-tight">
+<li class="h-full flex items-center text-blue-500 border-b-2 border-blue-600 pb-1 pt-1 cursor-pointer hover:bg-slate-900/50 active:scale-95 duration-200">
+                Dashboard
+            </li>
+<li class="h-full flex items-center text-slate-400 hover:text-slate-200 transition-colors pb-1 pt-1 cursor-pointer hover:bg-slate-900/50 active:scale-95 duration-200 border-b-2 border-transparent">
+                İstatistikler
+            </li>
+<li class="h-full flex items-center text-slate-400 hover:text-slate-200 transition-colors pb-1 pt-1 cursor-pointer hover:bg-slate-900/50 active:scale-95 duration-200 border-b-2 border-transparent">
+                Ayarlar
+            </li>
+</ul>
+<div class="flex items-center gap-6">
+<button class="hidden md:flex items-center justify-center h-[44px] px-lg bg-primary-container text-on-primary-container font-label-md text-label-md rounded-lg hover:brightness-110 active:scale-98 transition-all">
+                Not Ekle
+            </button>
+<div class="flex items-center gap-3">
+<button aria-label="notifications" class="w-[44px] h-[44px] flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors hover:bg-slate-900/50 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button aria-label="account_circle" class="w-[44px] h-[44px] flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors hover:bg-slate-900/50 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<div class="flex flex-1 pt-16 w-full h-screen overflow-hidden">
+<aside class="hidden lg:flex flex-col h-full sticky left-0 top-0 h-screen w-64 border-r border-slate-800 bg-slate-900 shadow-xl font-inter text-sm antialiased z-40">
+<div class="p-6 mb-2">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+<div>
+<h2 class="text-on-surface font-label-md text-label-md">Profesyonel Panel</h2>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Not Yönetimi</p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 h-[44px] bg-surface-container-high hover:bg-surface-container-highest text-on-surface border border-outline-variant rounded-lg font-label-md text-label-md transition-all active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Yeni Koleksiyon
+                </button>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-3">
+<a class="bg-blue-600/10 text-blue-500 border-r-4 border-blue-600 font-semibold px-4 py-3 flex items-center gap-3 rounded-l-lg transition-transform duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">description</span>
+                    Notlarım
+                </a>
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all rounded-lg hover:bg-slate-800 active:scale-95 duration-150 ease-in-out border-r-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">archive</span>
+                    Arşiv
+                </a>
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all rounded-lg hover:bg-slate-800 active:scale-95 duration-150 ease-in-out border-r-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">checklist</span>
+                    Görevler
+                </a>
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all rounded-lg hover:bg-slate-800 active:scale-95 duration-150 ease-in-out border-r-4 border-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+                    Çöp Kutusu
+                </a>
+</nav>
+<div class="p-3 border-t border-slate-800 mt-auto">
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all rounded-lg hover:bg-slate-800 active:scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                    Destek
+                </a>
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all rounded-lg hover:bg-slate-800 active:scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+                    Çıkış
+                </a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col relative h-full bg-surface overflow-y-auto">
+<div class="flex-1 flex flex-col items-center justify-center p-8 max-w-2xl mx-auto w-full">
+<div class="relative w-40 h-40 mb-10 flex items-center justify-center">
+<div class="absolute inset-0 bg-primary-container/5 rounded-full blur-2xl"></div>
+<div class="relative z-10 w-32 h-32 rounded-[2rem] bg-surface-container flex items-center justify-center shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)] border border-outline-variant/30 transform rotate-[-3deg]">
+<span class="material-symbols-outlined text-6xl text-outline opacity-80" style="font-variation-settings: 'wght' 200;">
+                            draft
+                        </span>
+<div class="absolute -bottom-2 -right-2 w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center border-2 border-surface shadow-lg">
+<span class="material-symbols-outlined text-primary text-xl">
+                                add_task
+                            </span>
+</div>
+</div>
+</div>
+<h1 class="font-h1 text-h1 text-on-surface mb-unit text-center">
+                    Henüz notunuz yok
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-center max-w-md mb-xl">
+                    Önemli bilgileri, fikirleri veya görevleri kaydetmek için temiz bir sayfa sizi bekliyor. Hemen yeni bir not oluşturarak başlayın.
+                </p>
+<button class="h-[52px] px-8 bg-primary-container text-on-primary-container font-label-md text-label-md rounded-full flex items-center gap-3 hover:brightness-110 active:scale-95 transition-all shadow-[0_8px_20px_-6px_rgba(37,99,235,0.4)] group border border-primary-container ring-offset-2 ring-offset-background focus:ring-2 focus:ring-primary">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform duration-300">add</span>
+                    İlk Notunu Ekle
+                </button>
+</div>
+</main>
+</div>
+</body></html>

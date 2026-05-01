@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profil Paneli - Mini Not Panosu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#32343d",
+                      "error": "#ffb4ab",
+                      "background": "#11131b",
+                      "surface-container-high": "#282a32",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "tertiary-container": "#bc4800",
+                      "on-background": "#e1e2ed",
+                      "on-surface": "#e1e2ed",
+                      "secondary-fixed-dim": "#b9c7df",
+                      "on-tertiary": "#581e00",
+                      "on-surface-variant": "#c3c6d7",
+                      "on-secondary-fixed-variant": "#3a485b",
+                      "outline-variant": "#434655",
+                      "error-container": "#93000a",
+                      "surface-tint": "#b4c5ff",
+                      "tertiary": "#ffb596",
+                      "surface-bright": "#373942",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "surface-dim": "#11131b",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-low": "#191b23",
+                      "on-primary-fixed": "#00174b",
+                      "on-primary": "#002a78",
+                      "primary": "#b4c5ff",
+                      "inverse-on-surface": "#2e3039",
+                      "on-error": "#690005",
+                      "primary-container": "#2563eb",
+                      "on-secondary": "#233144",
+                      "outline": "#8d90a0",
+                      "on-secondary-container": "#abb9d1",
+                      "secondary-container": "#3c4a5e",
+                      "surface": "#11131b",
+                      "on-tertiary-fixed": "#360f00",
+                      "surface-variant": "#32343d",
+                      "on-tertiary-container": "#ffede6",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container": "#1d1f27",
+                      "secondary": "#b9c7df",
+                      "inverse-surface": "#e1e2ed",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "inverse-primary": "#0053db",
+                      "on-secondary-fixed": "#0d1c2e",
+                      "surface-container-lowest": "#0c0e16",
+                      "secondary-fixed": "#d5e3fc",
+                      "on-primary-container": "#eeefff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "unit": "8px",
+                      "touch-target": "44px",
+                      "2xl": "48px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "margin": "24px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "h1": [
+                              "Inter"
+                      ],
+                      "h3": [
+                              "Inter"
+                      ],
+                      "h2": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1": [
+                              "30px",
+                              {
+                                      "lineHeight": "38px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body-md h-screen w-full flex overflow-hidden">
+<!-- Mock Background Content to show overlay effect -->
+<div class="flex-1 flex flex-col relative opacity-50 pointer-events-none">
+<!-- TopNavBar (Simulated) -->
+<nav class="fixed top-0 w-full flex items-center justify-between px-6 h-16 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 z-40">
+<div class="text-lg font-bold tracking-tighter text-slate-50">Mini Not Panosu</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400">notifications</span>
+<span class="material-symbols-outlined text-blue-500">account_circle</span>
+</div>
+</nav>
+<div class="mt-24 p-8 flex gap-6 flex-wrap">
+<div class="w-64 h-48 bg-surface-container rounded-lg border border-outline-variant p-4"></div>
+<div class="w-64 h-64 bg-surface-container rounded-lg border border-outline-variant p-4"></div>
+<div class="w-64 h-32 bg-surface-container rounded-lg border border-outline-variant p-4"></div>
+</div>
+</div>
+<!-- Backdrop Overlay -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 transition-opacity"></div>
+<!-- Profile Drawer Panel -->
+<aside class="fixed right-0 top-0 h-screen w-80 bg-surface-container border-l border-outline-variant shadow-[-10px_0_15px_-3px_rgba(0,0,0,0.5)] z-50 flex flex-col transform translate-x-0 transition-transform duration-300 ease-in-out">
+<!-- Header -->
+<div class="flex items-center justify-between p-lg border-b border-outline-variant">
+<h2 class="font-h3 text-h3 text-on-surface">Profil</h2>
+<button aria-label="Kapat" class="w-touch-target h-touch-target flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-lg flex flex-col gap-xl">
+<!-- User Identity -->
+<div class="flex flex-col items-center gap-md text-center mt-md">
+<div class="w-24 h-24 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-container-highest relative">
+<img alt="Kullanıcı Profili" class="w-full h-full object-cover" data-alt="A professional headshot of a person looking directly at the camera. The lighting is soft and flattering, typical of a high-quality studio portrait. The background is a subtle, out-of-focus gradient. The person has a friendly, approachable expression, fitting for a corporate SaaS application avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYjSylyv_dugd8EpW6SMW_jOZS6MrmN9hZas8SyvfajLBwdpgCzDNsl9SLrwnoAWmx7mKTl9gQJ06NC-z9T5_LjNM4viRMsMHtwVRRCxxZe5WihZII2u5w4nEUNy1syBjuD7xTlh1gxOBOi38NcD9dROnKz5XU8qIOkatsA1PRtnO9SdvvbZgobfD-Jnr8WUn_sRx7w49XphY1Dd_Tc5wb32s-m9mNHqZbm1saF3TLGjeYGfgNYkO-fnAgLS-eBDzH7Y80QZisS9gr"/>
+<button class="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-colors" title="Fotoğrafı Değiştir">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">edit</span>
+</button>
+</div>
+<div>
+<h3 class="font-h2 text-h2 text-on-surface mb-xs">Ahmet Yılmaz</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">ahmet.yilmaz@sirket.com</p>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/10 border border-primary-container/20 rounded-full mt-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-primary-fixed">Pro Üye</span>
+</div>
+</div>
+<!-- Stats/Summary Bento Grid -->
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface rounded-lg border border-outline-variant p-md flex flex-col items-center text-center">
+<span class="font-h2 text-h2 text-primary-fixed mb-xs">142</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Aktif Not</span>
+</div>
+<div class="bg-surface rounded-lg border border-outline-variant p-md flex flex-col items-center text-center">
+<span class="font-h2 text-h2 text-secondary mb-xs">15</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Koleksiyon</span>
+</div>
+</div>
+<hr class="border-outline-variant"/>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-sm">
+<a class="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">person</span>
+<span class="font-label-md text-label-md">Hesap Ayarları</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">palette</span>
+<span class="font-label-md text-label-md">Görünüm</span>
+<span class="ml-auto font-label-sm text-label-sm text-on-surface-variant bg-surface px-2 py-1 rounded border border-outline-variant">Koyu</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">security</span>
+<span class="font-label-md text-label-md">Güvenlik</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">credit_card</span>
+<span class="font-label-md text-label-md">Abonelik</span>
+</a>
+</nav>
+</div>
+<!-- Footer Actions -->
+<div class="p-lg border-t border-outline-variant bg-surface-container mt-auto">
+<button class="w-full flex items-center justify-center gap-md h-touch-target rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-highest hover:text-error hover:border-error/50 transition-all focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-surface-container">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Çıkış Yap</span>
+</button>
+</div>
+</aside>
+</body></html>

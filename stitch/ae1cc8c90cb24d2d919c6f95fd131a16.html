@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ana Ekran - Mini Not Panosu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#32343d",
+                      "error": "#ffb4ab",
+                      "background": "#11131b",
+                      "surface-container-high": "#282a32",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "tertiary-container": "#bc4800",
+                      "on-background": "#e1e2ed",
+                      "on-surface": "#e1e2ed",
+                      "secondary-fixed-dim": "#b9c7df",
+                      "on-tertiary": "#581e00",
+                      "on-surface-variant": "#c3c6d7",
+                      "on-secondary-fixed-variant": "#3a485b",
+                      "outline-variant": "#434655",
+                      "error-container": "#93000a",
+                      "surface-tint": "#b4c5ff",
+                      "tertiary": "#ffb596",
+                      "surface-bright": "#373942",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "surface-dim": "#11131b",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-low": "#191b23",
+                      "on-primary-fixed": "#00174b",
+                      "on-primary": "#002a78",
+                      "primary": "#b4c5ff",
+                      "inverse-on-surface": "#2e3039",
+                      "on-error": "#690005",
+                      "primary-container": "#2563eb",
+                      "on-secondary": "#233144",
+                      "outline": "#8d90a0",
+                      "on-secondary-container": "#abb9d1",
+                      "secondary-container": "#3c4a5e",
+                      "surface": "#11131b",
+                      "on-tertiary-fixed": "#360f00",
+                      "surface-variant": "#32343d",
+                      "on-tertiary-container": "#ffede6",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container": "#1d1f27",
+                      "secondary": "#b9c7df",
+                      "inverse-surface": "#e1e2ed",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "inverse-primary": "#0053db",
+                      "on-secondary-fixed": "#0d1c2e",
+                      "surface-container-lowest": "#0c0e16",
+                      "secondary-fixed": "#d5e3fc",
+                      "on-primary-container": "#eeefff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "unit": "8px",
+                      "touch-target": "44px",
+                      "2xl": "48px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "margin": "24px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "h1": ["Inter"],
+                      "h3": ["Inter"],
+                      "h2": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 16px;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 16px;
+        }
+        
+        .custom-checkbox {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            background-color: #1E293B;
+            border: 1px solid #334155;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .custom-checkbox:checked {
+            background-color: #2563EB;
+            border-color: #2563EB;
+        }
+        .custom-checkbox:checked::after {
+            content: '\e5ca';
+            font-family: 'Material Symbols Outlined';
+            font-size: 14px;
+            color: white;
+        }
+        .custom-checkbox:focus-visible {
+            outline: 2px solid #2563EB;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden lg:flex flex-col h-full sticky left-0 top-0 h-screen w-64 border-r border-slate-800 bg-slate-900 shadow-xl font-inter text-sm antialiased z-40">
+<div class="p-6 border-b border-slate-800 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center overflow-hidden">
+<img alt="Kullanıcı Profili" class="w-full h-full object-cover" data-alt="A close-up, professional portrait of a business person in a modern, dark-themed office environment. The lighting is soft and cinematic, emphasizing a professional and focused mood. The color palette leans heavily into deep slates, subtle blues, and warm skin tones, perfectly matching a high-end corporate SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8XjcJixC6xhYVYAFwtPatYEty7LMh-A--K_BqXQNdtDuPiuLs3zl6C3OQ-IrRB-1kaIksrzynywYav8J12MnS7QbQCfCPL-O8VcMpxlmtHpRFKVNIk_Pbwm6Yxz9WdK-o30y1yuL9hr2Hv4y2zex6bVXkToDo680qW_TdbqciEhvkeymDgLNrDJgcFqrylJ4Fxb3sQ6EgTCqF1-OqMNWxFTFgR2SnEKYJ2VqpUxns_PYBdmlSXQWQmznxvArW_4kitNyPVGdAosM4"/>
+</div>
+<div>
+<h2 class="text-slate-50 font-semibold">Profesyonel Panel</h2>
+<p class="text-slate-400 text-xs">Not Yönetimi</p>
+</div>
+</div>
+<div class="p-4">
+<button class="w-full bg-primary-container text-white h-touch-target rounded-lg font-label-md flex items-center justify-center gap-2 hover:brightness-90 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">
+<span class="material-symbols-outlined">add</span>
+                Yeni Koleksiyon
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto py-2">
+<ul class="space-y-1 px-2">
+<li>
+<a class="bg-blue-600/10 text-blue-500 border-r-4 border-blue-600 font-semibold px-4 py-3 flex items-center gap-3 rounded-l-md" href="#">
+<span class="material-symbols-outlined">description</span>
+                        Notlarım
+                    </a>
+</li>
+<li>
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="#">
+<span class="material-symbols-outlined">archive</span>
+                        Arşiv
+                    </a>
+</li>
+<li>
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="#">
+<span class="material-symbols-outlined">checklist</span>
+                        Görevler
+                    </a>
+</li>
+<li>
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="#">
+<span class="material-symbols-outlined">delete</span>
+                        Çöp Kutusu
+                    </a>
+</li>
+</ul>
+</div>
+<div class="p-2 border-t border-slate-800">
+<ul class="space-y-1">
+<li>
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                        Destek
+                    </a>
+</li>
+<li>
+<a class="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 rounded-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                        Çıkış
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full flex items-center justify-between px-6 h-16 bg-slate-950/80 backdrop-blur-md font-inter text-sm font-medium tracking-tight border-b border-slate-800 flat no shadows z-50 lg:pl-72">
+<div class="flex items-center gap-6">
+<!-- Mobile Menu Button -->
+<button class="lg:hidden text-slate-400 hover:text-slate-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="text-lg font-bold tracking-tighter text-slate-50 lg:hidden">
+                    Mini Not Panosu
+                </div>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex gap-6 h-16 items-center">
+<a class="text-blue-500 border-b-2 border-blue-600 pb-1 h-full flex items-center px-1" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors h-full flex items-center px-1 hover:bg-slate-900/50" href="#">İstatistikler</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors h-full flex items-center px-1 hover:bg-slate-900/50" href="#">Ayarlar</a>
+</nav>
+</div>
+<!-- Search & Actions -->
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="h-10 bg-surface-container-high border border-outline-variant rounded-md pl-10 pr-4 text-sm text-on-surface placeholder:text-slate-500 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-64" placeholder="Notlarda ara..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors hidden md:block">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="bg-primary-container text-white h-10 px-4 rounded-md font-label-md flex items-center gap-2 hover:brightness-90 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-sm">add</span>
+                        Not Ekle
+                    </button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto pt-24 px-4 md:px-8 pb-12">
+<div class="max-w-[1200px] mx-auto">
+<!-- Page Header & Filters -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+<div>
+<h1 class="font-h1 text-on-surface mb-2">Dashboard</h1>
+<p class="font-body-md text-on-surface-variant">Tüm notlarınızı ve görevlerinizi buradan yönetin.</p>
+</div>
+<!-- Filters -->
+<div class="flex bg-surface-container-high p-1 rounded-lg border border-outline-variant inline-flex">
+<button class="px-4 py-2 rounded-md bg-surface-container-highest text-on-surface font-label-md shadow-sm border border-outline-variant">Tümü</button>
+<button class="px-4 py-2 rounded-md text-on-surface-variant font-label-md hover:bg-surface-container-highest/50 transition-colors">Tamamlananlar</button>
+<button class="px-4 py-2 rounded-md text-on-surface-variant font-label-md hover:bg-surface-container-highest/50 transition-colors">Bekleyenler</button>
+</div>
+</div>
+<!-- Masonry Grid for Note Cards -->
+<div class="masonry-grid">
+<!-- Note Card 1 (Task List) -->
+<div class="masonry-item bg-surface-container-high border border-outline-variant rounded-xl p-5 relative group hover:-translate-y-1 transition-transform duration-200 shadow-sm hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.5)]">
+<button class="absolute top-4 right-4 text-slate-400 hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+<div class="flex gap-2 mb-3">
+<span class="h-6 px-2 rounded bg-tertiary-container/15 text-tertiary font-label-sm flex items-center">Proje</span>
+<span class="h-6 px-2 rounded bg-primary-container/15 text-primary font-label-sm flex items-center">Acil</span>
+</div>
+<h3 class="font-h3 text-on-surface mb-3 pr-8">Q3 Sunum Hazırlıkları</h3>
+<div class="space-y-3 mb-6">
+<label class="flex items-start gap-3 cursor-pointer group/item">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<span class="font-body-sm text-on-surface-variant group-hover/item:text-on-surface transition-colors">Finansal verileri topla</span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group/item">
+<input checked="" class="custom-checkbox mt-0.5" type="checkbox"/>
+<span class="font-body-sm text-slate-500 line-through">Slayt taslağını oluştur</span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group/item">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<span class="font-body-sm text-on-surface-variant group-hover/item:text-on-surface transition-colors">Pazarlama ekibiyle toplantı ayarla</span>
+</label>
+</div>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/50">
+<span class="font-label-sm text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                                Bugün, 14:00
+                            </span>
+<button class="text-primary font-label-md hover:underline">Düzenle</button>
+</div>
+</div>
+<!-- Note Card 2 (Text Note) -->
+<div class="masonry-item bg-surface-container-high border border-outline-variant rounded-xl p-5 relative group hover:-translate-y-1 transition-transform duration-200 shadow-sm hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.5)]">
+<button class="absolute top-4 right-4 text-slate-400 hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+<div class="flex gap-2 mb-3">
+<span class="h-6 px-2 rounded bg-slate-700/30 text-slate-300 font-label-sm flex items-center">Fikir</span>
+</div>
+<h3 class="font-h3 text-on-surface mb-2 pr-8">Yeni Arayüz Tasarım Fikirleri</h3>
+<p class="font-body-sm text-on-surface-variant mb-6 leading-relaxed">
+                            Kullanıcı testleri sonucunda navigasyonun sol tarafa alınmasının daha verimli olacağı ortaya çıktı. Dark mode varsayılan olmalı ve renk paleti kurumsal ciddiyeti yansıtacak şekilde revize edilmeli. Tipografi hiyerarşisi gözden geçirilecek.
+                        </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/50">
+<span class="font-label-sm text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                                Dün
+                            </span>
+<button class="text-primary font-label-md hover:underline">Düzenle</button>
+</div>
+</div>
+<!-- Note Card 3 (Image/Moodboard Note) -->
+<div class="masonry-item bg-surface-container-high border border-outline-variant rounded-xl overflow-hidden relative group hover:-translate-y-1 transition-transform duration-200 shadow-sm hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.5)]">
+<button class="absolute top-4 right-4 z-10 text-white hover:text-error bg-black/50 p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+<span class="material-symbols-outlined text-lg block">delete</span>
+</button>
+<img alt="Moodboard" class="w-full h-40 object-cover border-b border-outline-variant" data-alt="A clean, highly organized desk space featuring a sleek laptop, a minimal wireframe sketchbook, and a cup of black coffee. The lighting is bright but diffused, creating soft shadows. The overall mood is deeply focused and productive, aligned with a high-end corporate or modern tech startup aesthetic, utilizing neutral greys and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9dpbQnCxgOjcqkALglzIn6ucNQ36l1rILOWNQGOtmKvRqZbcOA8NdnnZ6luB6Tf7Q7frbEk42VvEYwPzmyE6xXrOw1r-axjx_J57fp3gESqitVjP19a6RuUeODbEl4UDhOSLA_Wo0686Ec8rQz71L3rHKdBH6wbGPVtongYph1hlkJxGNZA7gKDSXH3lhaypABqLtnPz6ffHluJ_imLpb19pY6P5WbcQn0P2TtDnDPNkY3CliDvfAmFosqzDxhIsoxxf2ZM-K1skn"/>
+<div class="p-5">
+<div class="flex gap-2 mb-3">
+<span class="h-6 px-2 rounded bg-secondary-container/30 text-secondary font-label-sm flex items-center">Referans</span>
+</div>
+<h3 class="font-h3 text-on-surface mb-2">Ofis Düzeni İlhamı</h3>
+<p class="font-body-sm text-on-surface-variant mb-4">
+                                Yeni çalışma alanı için potansiyel düzenlemeler.
+                            </p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/50">
+<span class="font-label-sm text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                                    2 Gün Önce
+                                </span>
+<button class="text-primary font-label-md hover:underline">Düzenle</button>
+</div>
+</div>
+</div>
+<!-- Note Card 4 (Short Note) -->
+<div class="masonry-item bg-surface-container-high border border-outline-variant rounded-xl p-5 relative group hover:-translate-y-1 transition-transform duration-200 shadow-sm hover:shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.5)]">
+<button class="absolute top-4 right-4 text-slate-400 hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+<h3 class="font-h3 text-on-surface mb-2 pr-8">Alışveriş Listesi</h3>
+<div class="space-y-2 mb-6">
+<label class="flex items-start gap-3 cursor-pointer group/item">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<span class="font-body-sm text-on-surface-variant group-hover/item:text-on-surface transition-colors">Kahve Çekirdeği</span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group/item">
+<input class="custom-checkbox mt-0.5" type="checkbox"/>
+<span class="font-body-sm text-on-surface-variant group-hover/item:text-on-surface transition-colors">A4 Kağıt</span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group/item">
+<input checked="" class="custom-checkbox mt-0.5" type="checkbox"/>
+<span class="font-body-sm text-slate-500 line-through">Beyaz Tahta Kalemi</span>
+</label>
+</div>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/50">
+<span class="font-label-sm text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                                1 Hafta Önce
+                            </span>
+<button class="text-primary font-label-md hover:underline">Düzenle</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
