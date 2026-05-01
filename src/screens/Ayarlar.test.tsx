@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import { Ayarlar } from './Ayarlar';
 import type { AppPreferences } from '../types/domain';
 
@@ -79,9 +79,8 @@ describe('Ayarlar', () => {
   it('closes confirmation dialog when İptal clicked', () => {
     setup();
     fireEvent.click(screen.getByText('Verileri Temizle'));
-    // Dialog İptal button is inside the modal overlay
-    const dialogIptal = screen.getByText('Tüm Verileri Sil').closest('div')?.parentElement?.querySelector('button');
-    if (dialogIptal) fireEvent.click(dialogIptal);
+    const dialog = screen.getByRole('dialog');
+    fireEvent.click(within(dialog).getByRole('button', { name: 'İptal' }));
     expect(screen.queryByText('Tüm Verileri Sil')).not.toBeInTheDocument();
   });
 
@@ -95,9 +94,7 @@ describe('Ayarlar', () => {
   it('calls onBack when İptal button clicked', () => {
     const onBack = vi.fn();
     setup({ onBack });
-    // Get the bottom cancel button in the action bar
-    const cancelButtons = screen.getAllByText('İptal');
-    fireEvent.click(cancelButtons[cancelButtons.length - 1]);
+    fireEvent.click(screen.getByRole('button', { name: 'İptal' }));
     expect(onBack).toHaveBeenCalled();
   });
 

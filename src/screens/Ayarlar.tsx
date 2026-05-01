@@ -224,7 +224,7 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input readOnly className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="gunluk-ozet" type="checkbox" />
+      <input checked={true} readOnly className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="gunluk-ozet" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="gunluk-ozet">Günlük Özet</label>
