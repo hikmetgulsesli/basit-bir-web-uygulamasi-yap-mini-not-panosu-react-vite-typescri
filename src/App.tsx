@@ -111,6 +111,7 @@ export default function App() {
             onEdit={handleEditNote}
             onDelete={deleteNote}
             onToggleTodo={toggleTodo}
+            onAddNote={handleAddNote}
           />
         );
       case 'settings':

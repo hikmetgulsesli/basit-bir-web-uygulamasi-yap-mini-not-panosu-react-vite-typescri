@@ -16,6 +16,7 @@ interface NotDetayiProps {
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
   onToggleTodo: (noteId: string, todoId: string) => void;
+  onAddNote?: () => void;
 }
 
 function formatDateFull(dateStr: string): string {
@@ -24,8 +25,23 @@ function formatDateFull(dateStr: string): string {
 }
 
 export function NotDetayi(props: NotDetayiProps) {
-  const { note, onBack, onEdit, onDelete, onToggleTodo } = props;
+  const { note, onBack, onEdit, onDelete, onToggleTodo, onAddNote } = props;
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+  const [shareFeedback, setShareFeedback] = useState(false);
+
+  const handleShare = () => {
+    if (note) {
+      const text = `${note.title}\n\n${note.content}`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text)
+          .then(() => setShareFeedback(true))
+          .catch(() => {});
+      } else {
+        setShareFeedback(true);
+      }
+      setTimeout(() => setShareFeedback(false), 2000);
+    }
+  };
 
   if (!note) {
     return (
@@ -68,7 +84,7 @@ export function NotDetayi(props: NotDetayiProps) {
       </div>
       {/* CTA */}
       <div className="p-md">
-      <button className="w-full h-touch-target bg-blue-600 hover:bg-blue-700 text-slate-50 rounded-full font-inter text-sm antialiased font-medium flex items-center justify-center gap-xs transition-colors shadow-md">
+      <button className="w-full h-touch-target bg-blue-600 hover:bg-blue-700 text-slate-50 rounded-full font-inter text-sm antialiased font-medium flex items-center justify-center gap-xs transition-colors shadow-md" onClick={onAddNote}>
       <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>add</span>
                       Yeni Koleksiyon
                   </button>
@@ -119,11 +135,11 @@ export function NotDetayi(props: NotDetayiProps) {
       </button>
       {/* Note Actions */}
       <div className="flex items-center gap-unit bg-surface-container-low border border-outline-variant rounded-full p-xs shadow-sm">
-      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md" title="Arşivle">
+      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md opacity-50 cursor-not-allowed" title="Arşivle" aria-label="Arşivle" disabled>
       <span className="material-symbols-outlined text-[18px]">archive</span>
       <span className="hidden md:inline">Arşivle</span>
       </button>
-      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md" title="Paylaş">
+      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md" title="Paylaş" aria-label="Paylaş" onClick={handleShare}>
       <span className="material-symbols-outlined text-[18px]">share</span>
       <span className="hidden md:inline">Paylaş</span>
       </button>
@@ -230,6 +246,12 @@ export function NotDetayi(props: NotDetayiProps) {
       </div>
       </div>
       {/* Delete Confirmation */}
+      {shareFeedback && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-surface-container-high border border-outline-variant rounded-lg px-4 py-2 shadow-lg z-50 flex items-center gap-2">
+          <span className="material-symbols-outlined text-primary text-sm">check</span>
+          <span className="font-body-sm text-on-surface">Not panoya kopyalandı</span>
+        </div>
+      )}
       {showConfirmDelete && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
           <div className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">

@@ -144,7 +144,7 @@ export function NotEkleduzenle(props: NotEkleduzenleProps) {
       <div className="flex items-center gap-sm">
       <label className="flex items-center gap-sm cursor-pointer group">
       <div className="relative flex items-center justify-center">
-      <input className="peer sr-only" type="checkbox" checked={important} onChange={(e) => setImportant(e.target.checked)} />
+      <input className="peer sr-only" type="checkbox" checked={important} onChange={(e) => setImportant(e.target.checked)} aria-label="Önemli olarak işaretle" />
       <div className="w-[18px] h-[18px] rounded-lg border border-[#334155] bg-[#1E293B] peer-checked:bg-[#2563EB] peer-checked:border-[#2563EB] transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-[#2563EB] peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-[#11131b]"></div>
       <span className="material-symbols-outlined absolute text-[14px] text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" style={{fontVariationSettings: "'FILL' 1"}}>check</span>
       </div>
