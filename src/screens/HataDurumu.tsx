@@ -9,9 +9,13 @@
 
 import { useState } from "react";
 
-interface HataDurumuProps {}
+interface HataDurumuProps {
+  onRetry: () => void;
+  onBack: () => void;
+}
 
 export function HataDurumu(props: HataDurumuProps) {
+  const { onRetry, onBack } = props;
   return (
     <>
       {/* Error State Canvas */}
@@ -42,13 +46,13 @@ export function HataDurumu(props: HataDurumuProps) {
       </div>
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-md w-full sm:w-auto mt-xl">
-      <button className="h-touch-target px-lg bg-primary-container text-on-primary-container font-label-md text-label-md rounded-DEFAULT hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-sm active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+      <button className="h-touch-target px-lg bg-primary-container text-on-primary-container font-label-md text-label-md rounded-DEFAULT hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-sm active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background" onClick={onRetry}>
       <span className="material-symbols-outlined text-[20px]">refresh</span>
                       Tekrar Dene
                   </button>
-      <button className="h-touch-target px-lg border border-outline-variant text-on-surface font-label-md text-label-md rounded-DEFAULT hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-sm active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
-      <span className="material-symbols-outlined text-[20px]">support_agent</span>
-                      Destek Al
+      <button className="h-touch-target px-lg border border-outline-variant text-on-surface font-label-md text-label-md rounded-DEFAULT hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-sm active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background" onClick={onBack}>
+      <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+                      Geri Dön
                   </button>
       </div>
       </main>
