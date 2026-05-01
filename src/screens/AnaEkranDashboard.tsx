@@ -199,8 +199,36 @@ export function AnaEkranDashboard(props: AnaEkranDashboardProps) {
       {/* Note Cards */}
       {filteredNotes.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <span className="material-symbols-outlined text-6xl text-outline opacity-60 mb-4">search_off</span>
-          <p className="font-body-md text-on-surface-variant">Arama sonucu bulunamadı.</p>
+          <span className="material-symbols-outlined text-6xl text-outline opacity-60 mb-4">
+            {searchQuery.trim() ? 'search_off' : filterTab === 'completed' ? 'task_alt' : filterTab === 'pending' ? 'pending_actions' : 'search_off'}
+          </span>
+          <p className="font-body-md text-on-surface-variant mb-2">
+            {searchQuery.trim()
+              ? 'Aramanızla eşleşen not bulunamadı.'
+              : filterTab === 'completed'
+              ? 'Henüz tamamlanan not yok.'
+              : filterTab === 'pending'
+              ? 'Henüz bekleyen not yok.'
+              : 'Not bulunamadı.'}
+          </p>
+          {searchQuery.trim() && (
+            <button
+              className="mt-2 px-4 py-2 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md flex items-center gap-2"
+              onClick={() => onSearchChange('')}
+            >
+              <span className="material-symbols-outlined text-sm">clear</span>
+              Aramayı Temizle
+            </button>
+          )}
+          {filterTab !== 'all' && (
+            <button
+              className="mt-2 px-4 py-2 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md flex items-center gap-2"
+              onClick={() => onFilterChange('all')}
+            >
+              <span className="material-symbols-outlined text-sm">filter_alt_off</span>
+              Filtreyi Temizle
+            </button>
+          )}
         </div>
       ) : (
         filteredNotes.map((note) => (
