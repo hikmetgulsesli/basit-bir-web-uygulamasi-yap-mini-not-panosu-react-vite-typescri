@@ -33,9 +33,12 @@ export function NotDetayi(props: NotDetayiProps) {
     if (note) {
       const text = `${note.title}\n\n${note.content}`;
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).catch(() => {});
+        navigator.clipboard.writeText(text)
+          .then(() => setShareFeedback(true))
+          .catch(() => {});
+      } else {
+        setShareFeedback(true);
       }
-      setShareFeedback(true);
       setTimeout(() => setShareFeedback(false), 2000);
     }
   };
@@ -132,11 +135,11 @@ export function NotDetayi(props: NotDetayiProps) {
       </button>
       {/* Note Actions */}
       <div className="flex items-center gap-unit bg-surface-container-low border border-outline-variant rounded-full p-xs shadow-sm">
-      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md opacity-50 cursor-not-allowed" title="Arşivle" disabled>
+      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md opacity-50 cursor-not-allowed" title="Arşivle" aria-label="Arşivle" disabled>
       <span className="material-symbols-outlined text-[18px]">archive</span>
       <span className="hidden md:inline">Arşivle</span>
       </button>
-      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md" title="Paylaş" onClick={handleShare}>
+      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md" title="Paylaş" aria-label="Paylaş" onClick={handleShare}>
       <span className="material-symbols-outlined text-[18px]">share</span>
       <span className="hidden md:inline">Paylaş</span>
       </button>
