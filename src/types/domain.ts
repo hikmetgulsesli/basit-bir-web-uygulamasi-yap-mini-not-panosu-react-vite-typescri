@@ -37,7 +37,7 @@ export interface AppPreferences {
 export interface UserProfile {
   displayName: string;
   email: string;
-  avatarUrl: string;
+  avatarUrl?: string;
 }
 
 export interface AppState {

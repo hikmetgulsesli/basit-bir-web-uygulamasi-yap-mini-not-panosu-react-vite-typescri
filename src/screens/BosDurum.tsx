@@ -67,7 +67,7 @@ export function BosDurum(props: BosDurumProps) {
                       </button>
       </div>
       <nav className="flex-1 flex flex-col gap-1 px-3">
-      <a className="bg-blue-600/10 text-blue-500 border-r-4 border-blue-600 font-semibold px-4 py-3 flex items-center gap-3 rounded-l-lg transition-transform duration-150 ease-in-out cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
+      <a className="bg-primary-container/10 text-primary border-r-4 border-primary font-semibold px-4 py-3 flex items-center gap-3 rounded-l-lg transition-transform duration-150 ease-in-out cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined text-[20px]" style={{fontVariationSettings: "'FILL' 1"}}>description</span>
                           Notlarım
                       </a>

@@ -16,7 +16,7 @@ interface ProfilPaneliProps {
   onOpenAccount: () => void;
   activeNotesCount: number;
   collectionsCount: number;
-  userProfile: UserProfile;
+  userProfile?: UserProfile;
 }
 
 export function ProfilPaneli(props: ProfilPaneliProps) {
@@ -30,7 +30,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       <div className="text-lg font-bold tracking-tighter text-slate-50">Mini Not Panosu</div>
       <div className="flex gap-4">
       <span className="material-symbols-outlined text-slate-400">notifications</span>
-      <span className="material-symbols-outlined text-blue-500">account_circle</span>
+      <span className="material-symbols-outlined text-primary">account_circle</span>
       </div>
       </nav>
       <div className="mt-24 p-8 flex gap-6 flex-wrap">
@@ -45,7 +45,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       <aside className="fixed right-0 top-0 h-screen w-80 bg-surface-container border-l border-outline-variant shadow-[-10px_0_15px_-3px_rgba(0,0,0,0.5)] z-50 flex flex-col transform translate-x-0 transition-transform duration-300 ease-in-out">
       {/* Header */}
       <div className="flex items-center justify-between p-lg border-b border-outline-variant">
-      <h1 className="font-h3 text-h3 text-on-surface">Profil</h1>
+      <h2 className="font-h3 text-h3 text-on-surface">Profil</h2>
       <button aria-label="Kapat" className="w-touch-target h-touch-target flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container" onClick={onClose}>
       <span className="material-symbols-outlined text-on-surface-variant">close</span>
       </button>
@@ -55,14 +55,14 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       {/* User Identity */}
       <div className="flex flex-col items-center gap-md text-center mt-md">
       <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-container-highest relative">
-      <img alt="Kullanıcı Profili" className="w-full h-full object-cover" src={userProfile.avatarUrl} />
-      <button className="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center opacity-50 cursor-not-allowed" title="Fotoğrafı Değiştir" disabled aria-label="Fotoğrafı Değiştir">
+      <img alt="Kullanıcı Profili" className="w-full h-full object-cover" data-alt="A professional headshot of a person looking directly at the camera. The lighting is soft and flattering, typical of a high-quality studio portrait. The background is a subtle, out-of-focus gradient. The person has a friendly, approachable expression, fitting for a corporate SaaS application avatar." src={userProfile?.avatarUrl ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuAYjSylyv_dugd8EpW6SMW_jOZS6MrmN9hZas8SyvfajLBwdpgCzDNsl9SLrwnoAWmx7mKTl9gQJ06NC-z9T5_LjNM4viRMsMHtwVRRCxxZe5WihZII2u5w4nEUNy1syBjuD7xTlh1gxOBOi38NcD9dROnKz5XU8qIOkatsA1PRtnO9SdvvbZgobfD-Jnr8WUn_sRx7w49XphY1Dd_Tc5wb32s-m9mNHqZbm1saF3TLGjeYGfgNYkO-fnAgLS-eBDzH7Y80QZisS9gr"} />
+      <button className="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-colors" title="Fotoğrafı Değiştir" onClick={() => {}}>
       <span className="material-symbols-outlined text-[16px] text-on-surface-variant">edit</span>
       </button>
       </div>
       <div>
-      <h3 className="font-h2 text-h2 text-on-surface mb-xs">{userProfile.displayName}</h3>
-      <p className="font-body-sm text-body-sm text-on-surface-variant">{userProfile.email}</p>
+      <h3 className="font-h2 text-h2 text-on-surface mb-xs">{userProfile?.displayName ?? 'Ahmet Yılmaz'}</h3>
+      <p className="font-body-sm text-body-sm text-on-surface-variant">{userProfile?.email ?? 'ahmet.yilmaz@sirket.com'}</p>
       </div>
       <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/10 border border-primary-container/20 rounded-full mt-2">
       <span className="w-2 h-2 rounded-full bg-primary-container"></span>
@@ -95,12 +95,10 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">security</span>
       <span className="font-label-md text-label-md">Güvenlik</span>
-      <span className="ml-auto font-label-sm text-label-sm text-on-surface-variant bg-surface px-2 py-1 rounded border border-outline-variant">Yakında</span>
       </a>
       <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">credit_card</span>
       <span className="font-label-md text-label-md">Abonelik</span>
-      <span className="ml-auto font-label-sm text-label-sm text-on-surface-variant bg-surface px-2 py-1 rounded border border-outline-variant">Yakında</span>
       </a>
       </nav>
       </div>

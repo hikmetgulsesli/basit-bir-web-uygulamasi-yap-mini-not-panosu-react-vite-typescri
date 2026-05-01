@@ -10,13 +10,13 @@
 import { useState } from "react";
 
 interface HataDurumuProps {
+  errorMessage?: string;
   onRetry: () => void;
   onBack: () => void;
-  errorMessage?: string;
 }
 
 export function HataDurumu(props: HataDurumuProps) {
-  const { onRetry, onBack, errorMessage } = props;
+  const { errorMessage = 'ERR_UNKNOWN: Beklenmeyen bir sorun oluştu', onRetry, onBack } = props;
   return (
     <>
       {/* Error State Canvas */}
@@ -35,7 +35,7 @@ export function HataDurumu(props: HataDurumuProps) {
                       Bir Sorun Oluştu
                   </h1>
       <p className="font-body-lg text-body-lg text-on-surface-variant">
-                      {errorMessage?.startsWith('ERR_STORAGE') 
+                      {errorMessage?.startsWith('ERR_STORAGE')
                         ? 'Veriler yüklenirken yerel depolama ile iletişim kurulamadı. Lütfen tarayıcı ayarlarınızı kontrol edin.'
                         : 'Veriler yüklenirken sunucu ile iletişim kurulamadı. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.'}
                   </p>
@@ -44,7 +44,7 @@ export function HataDurumu(props: HataDurumuProps) {
       <div className="bg-surface-container rounded-lg p-md w-full border border-outline-variant text-left">
       <p className="font-label-sm text-label-sm text-on-surface-variant mb-xs uppercase tracking-wider">Hata Detayı</p>
       <code className="font-mono text-[13px] text-error block truncate">
-                      {errorMessage || 'ERR_UNKNOWN: Beklenmeyen bir sorun oluştu'}
+                      {errorMessage}
                   </code>
       </div>
       {/* Action Buttons */}

@@ -12,9 +12,9 @@ import type { AppPreferences, UserProfile } from "../types/domain";
 
 interface AyarlarProps {
   preferences: AppPreferences;
-  userProfile: UserProfile;
+  userProfile?: UserProfile;
   onPreferencesChange: (prefs: Partial<AppPreferences>) => void;
-  onUserProfileChange: (profile: Partial<UserProfile>) => void;
+  onUserProfileChange?: (profile: Partial<UserProfile>) => void;
   onClearData: () => void;
   onBack: () => void;
 }
@@ -89,10 +89,10 @@ export function Ayarlar(props: AyarlarProps) {
       <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
       <input className="bg-slate-900 border border-slate-800 rounded-full pl-9 pr-4 py-1.5 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 w-48 lg:w-64 text-slate-200 placeholder-slate-500 transition-all" placeholder="Notlarda ara..." type="text" />
       </div>
-      <button className="text-slate-400 opacity-50 cursor-not-allowed p-2 rounded-full flex items-center justify-center" aria-label="Bildirimler" disabled title="Bildirimler (yakında)">
+      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center" aria-label="Bildirimler" onClick={() => {}}>
       <span className="material-symbols-outlined">notifications</span>
       </button>
-      <button className="text-slate-400 opacity-50 cursor-not-allowed p-2 rounded-full flex items-center justify-center" aria-label="Profil" disabled title="Profil (yakında)">
+      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center" aria-label="Profil" onClick={() => {}}>
       <span className="material-symbols-outlined">account_circle</span>
       </button>
       <button className="hidden sm:flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors items-center gap-2" onClick={onBack}>
@@ -111,11 +111,7 @@ export function Ayarlar(props: AyarlarProps) {
       {/* Settings Navigation / Sidebar (Internal) */}
       <div className="col-span-1 hidden lg:block">
       <nav className="space-y-1">
-      <a className="flex items-center gap-3 px-4 py-3 bg-surface-container-high text-primary rounded-lg font-label-md text-label-md" href="#hesap">
-      <span className="material-symbols-outlined">person</span>
-                                  Hesap Ayarları
-                              </a>
-      <a className="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-lg font-label-md text-label-md transition-colors" href="#gorunum">
+      <a className="flex items-center gap-3 px-4 py-3 bg-surface-container-high text-primary rounded-lg font-label-md text-label-md" href="#gorunum">
       <span className="material-symbols-outlined">palette</span>
                                   Görünüm Ayarları
                               </a>
@@ -135,19 +131,19 @@ export function Ayarlar(props: AyarlarProps) {
       <section className="bg-[#1E293B] border border-[#334155] rounded-xl p-6 sm:p-8" id="hesap">
       <div className="border-b border-[#334155] pb-4 mb-6">
       <h2 className="font-h2 text-h2 text-on-surface flex items-center gap-2">
-      <span className="material-symbols-outlined text-primary">person</span>
+      <span className="material-symbols-outlined text-primary">account_circle</span>
                                       Hesap Ayarları
                                   </h2>
       <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Profil bilgilerinizi güncelleyin.</p>
       </div>
-      <div className="space-y-6">
+      <div className="space-y-4">
       <div>
-      <label className="block font-label-md text-label-md text-on-surface mb-2" htmlFor="displayName">Görünen Ad</label>
-      <input id="displayName" className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" type="text" value={userProfile.displayName} onChange={(e) => onUserProfileChange({ displayName: e.target.value })} />
+      <label htmlFor="display-name" className="block font-label-md text-label-md text-on-surface mb-2">Görünen Ad</label>
+      <input id="display-name" className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" type="text" value={userProfile?.displayName ?? ''} onChange={(e) => onUserProfileChange?.({ displayName: e.target.value })} />
       </div>
       <div>
-      <label className="block font-label-md text-label-md text-on-surface mb-2" htmlFor="email">E-posta</label>
-      <input id="email" className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" type="email" value={userProfile.email} onChange={(e) => onUserProfileChange({ email: e.target.value })} />
+      <label htmlFor="email" className="block font-label-md text-label-md text-on-surface mb-2">E-posta</label>
+      <input id="email" className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" type="email" value={userProfile?.email ?? ''} onChange={(e) => onUserProfileChange?.({ email: e.target.value })} />
       </div>
       </div>
       </section>
@@ -222,8 +218,8 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="font-label-md text-label-md text-on-surface">Kompakt Liste Görünümü</div>
       <div className="font-body-sm text-body-sm text-on-surface-variant">Notları listelerken daha az boşluk kullan.</div>
       </div>
-      <label className="relative inline-flex items-center cursor-pointer">
-      <input className="sr-only peer" aria-label="Kompakt Liste Görünümü" type="checkbox" checked={preferences.compactView} onChange={(e) => onPreferencesChange({ compactView: e.target.checked })} />
+      <label htmlFor="compact-view" className="relative inline-flex items-center cursor-pointer">
+      <input id="compact-view" aria-label="Kompakt Liste Görünümü" className="sr-only peer" type="checkbox" checked={preferences.compactView} onChange={(e) => onPreferencesChange({ compactView: e.target.checked })} />
       <div className="w-11 h-6 bg-surface-container-highest peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2 peer-focus:ring-offset-background rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
       </label>
       </div>
@@ -241,7 +237,7 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="space-y-4">
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input checked={true} readOnly className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="not-hatirlatici" type="checkbox" />
+      <input checked={true} className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="not-hatirlatici" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="not-hatirlatici">Not Hatırlatıcıları</label>
@@ -250,7 +246,7 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input checked={true} readOnly className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="gunluk-ozet" type="checkbox" />
+      <input className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="gunluk-ozet" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="gunluk-ozet">Günlük Özet</label>
@@ -259,7 +255,7 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input checked={true} readOnly className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="sistem-guncelleme" type="checkbox" />
+      <input checked={true} className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="sistem-guncelleme" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="sistem-guncelleme">Sistem Güncellemeleri</label>
@@ -303,8 +299,8 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       {/* Clear Data Confirmation */}
       {showConfirmClear && (
-        <div role="dialog" aria-modal="true" className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div role="dialog" aria-modal="true" className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">
             <h2 className="font-h2 text-h2 text-error mb-2">Tüm Verileri Sil</h2>
             <p className="font-body-md text-body-md text-on-surface-variant mb-6">Tüm notlarınız ve tercihleriniz kalıcı olarak silinecek. Bu işlem geri alınamaz.</p>
             <div className="flex gap-3 justify-end">
