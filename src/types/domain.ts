@@ -34,6 +34,12 @@ export interface AppPreferences {
   compactView: boolean;
 }
 
+export interface UserProfile {
+  displayName: string;
+  email: string;
+  avatarUrl: string;
+}
+
 export interface AppState {
   notes: Note[];
   view: View;
@@ -41,4 +47,5 @@ export interface AppState {
   searchQuery: string;
   filterTab: FilterTab;
   preferences: AppPreferences;
+  userProfile: UserProfile;
 }

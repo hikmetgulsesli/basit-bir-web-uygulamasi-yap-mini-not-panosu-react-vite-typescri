@@ -8,17 +8,19 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
-import type { AppPreferences } from "../types/domain";
+import type { AppPreferences, UserProfile } from "../types/domain";
 
 interface AyarlarProps {
   preferences: AppPreferences;
+  userProfile: UserProfile;
   onPreferencesChange: (prefs: Partial<AppPreferences>) => void;
+  onUserProfileChange: (profile: Partial<UserProfile>) => void;
   onClearData: () => void;
   onBack: () => void;
 }
 
 export function Ayarlar(props: AyarlarProps) {
-  const { preferences, onPreferencesChange, onClearData, onBack } = props;
+  const { preferences, userProfile, onPreferencesChange, onUserProfileChange, onClearData, onBack } = props;
   const [showConfirmClear, setShowConfirmClear] = useState(false);
   return (
     <>
@@ -109,7 +111,11 @@ export function Ayarlar(props: AyarlarProps) {
       {/* Settings Navigation / Sidebar (Internal) */}
       <div className="col-span-1 hidden lg:block">
       <nav className="space-y-1">
-      <a className="flex items-center gap-3 px-4 py-3 bg-surface-container-high text-primary rounded-lg font-label-md text-label-md" href="#gorunum">
+      <a className="flex items-center gap-3 px-4 py-3 bg-surface-container-high text-primary rounded-lg font-label-md text-label-md" href="#hesap">
+      <span className="material-symbols-outlined">person</span>
+                                  Hesap Ayarları
+                              </a>
+      <a className="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high/50 rounded-lg font-label-md text-label-md transition-colors" href="#gorunum">
       <span className="material-symbols-outlined">palette</span>
                                   Görünüm Ayarları
                               </a>
@@ -125,6 +131,26 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       {/* Settings Content Area */}
       <div className="col-span-1 lg:col-span-2 space-y-8">
+      {/* Hesap Ayarları Section */}
+      <section className="bg-[#1E293B] border border-[#334155] rounded-xl p-6 sm:p-8" id="hesap">
+      <div className="border-b border-[#334155] pb-4 mb-6">
+      <h2 className="font-h2 text-h2 text-on-surface flex items-center gap-2">
+      <span className="material-symbols-outlined text-primary">person</span>
+                                      Hesap Ayarları
+                                  </h2>
+      <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Profil bilgilerinizi güncelleyin.</p>
+      </div>
+      <div className="space-y-6">
+      <div>
+      <label className="block font-label-md text-label-md text-on-surface mb-2" htmlFor="displayName">Görünen Ad</label>
+      <input id="displayName" className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" type="text" value={userProfile.displayName} onChange={(e) => onUserProfileChange({ displayName: e.target.value })} />
+      </div>
+      <div>
+      <label className="block font-label-md text-label-md text-on-surface mb-2" htmlFor="email">E-posta</label>
+      <input id="email" className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" type="email" value={userProfile.email} onChange={(e) => onUserProfileChange({ email: e.target.value })} />
+      </div>
+      </div>
+      </section>
       {/* Görünüm Ayarları Section */}
       <section className="bg-[#1E293B] border border-[#334155] rounded-xl p-6 sm:p-8" id="gorunum">
       <div className="border-b border-[#334155] pb-4 mb-6">

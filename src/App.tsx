@@ -23,6 +23,7 @@ export default function App() {
     setSearch,
     setFilter,
     setPreferences,
+    setUserProfile,
     clearAll,
   } = useAppState();
 
@@ -118,7 +119,9 @@ export default function App() {
         return (
           <Ayarlar
             preferences={state.preferences}
+            userProfile={state.userProfile}
             onPreferencesChange={setPreferences}
+            onUserProfileChange={setUserProfile}
             onClearData={handleClearData}
             onBack={() => setView('dashboard')}
           />
@@ -136,8 +139,10 @@ export default function App() {
           <ProfilPaneli
             onClose={() => setView('dashboard')}
             onOpenSettings={() => setView('settings')}
+            onOpenAccount={() => setView('settings')}
             activeNotesCount={state.notes.length}
             collectionsCount={uniqueCategories.length}
+            userProfile={state.userProfile}
           />
         );
       case 'error':

@@ -1,13 +1,22 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ProfilPaneli } from './ProfilPaneli';
+import type { UserProfile } from '../types/domain';
+
+const defaultProfile: UserProfile = {
+  displayName: 'Ahmet Yılmaz',
+  email: 'ahmet.yilmaz@sirket.com',
+  avatarUrl: 'https://example.com/avatar.png',
+};
 
 function setup(props = {}) {
   const defaultProps = {
     onClose: vi.fn(),
     onOpenSettings: vi.fn(),
+    onOpenAccount: vi.fn(),
     activeNotesCount: 5,
     collectionsCount: 3,
+    userProfile: defaultProfile,
   };
   return render(<ProfilPaneli {...defaultProps} {...props} />);
 }
@@ -54,6 +63,19 @@ describe('ProfilPaneli', () => {
     setup({ onOpenSettings });
     fireEvent.click(screen.getByText('Görünüm'));
     expect(onOpenSettings).toHaveBeenCalled();
+  });
+
+  it('calls onOpenAccount when Hesap Ayarları link clicked', () => {
+    const onOpenAccount = vi.fn();
+    setup({ onOpenAccount });
+    fireEvent.click(screen.getByText('Hesap Ayarları'));
+    expect(onOpenAccount).toHaveBeenCalled();
+  });
+
+  it('renders dynamic user name and email from userProfile', () => {
+    setup({ userProfile: { displayName: 'Mehmet Kaya', email: 'mehmet@example.com', avatarUrl: 'https://example.com/new-avatar.png' } });
+    expect(screen.getByText('Mehmet Kaya')).toBeInTheDocument();
+    expect(screen.getByText('mehmet@example.com')).toBeInTheDocument();
   });
 
   it('calls onClose when Çıkış Yap button clicked', () => {
