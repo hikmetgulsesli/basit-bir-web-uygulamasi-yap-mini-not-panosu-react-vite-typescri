@@ -277,7 +277,7 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       {/* Clear Data Confirmation */}
       {showConfirmClear && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
+        <div role="dialog" aria-modal="true" className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
           <div className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">
             <h2 className="font-h2 text-h2 text-error mb-2">Tüm Verileri Sil</h2>
             <p className="font-body-md text-body-md text-on-surface-variant mb-6">Tüm notlarınız ve tercihleriniz kalıcı olarak silinecek. Bu işlem geri alınamaz.</p>
