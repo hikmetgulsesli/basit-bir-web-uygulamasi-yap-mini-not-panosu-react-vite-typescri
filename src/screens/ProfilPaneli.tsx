@@ -9,15 +9,19 @@
 
 import { useState } from "react";
 
+import type { UserProfile } from "../types/domain";
+
 interface ProfilPaneliProps {
   onClose: () => void;
   onOpenSettings: () => void;
+  onOpenAccount: () => void;
   activeNotesCount: number;
   collectionsCount: number;
+  userProfile: UserProfile;
 }
 
 export function ProfilPaneli(props: ProfilPaneliProps) {
-  const { onClose, onOpenSettings, activeNotesCount, collectionsCount } = props;
+  const { onClose, onOpenSettings, onOpenAccount, activeNotesCount, collectionsCount, userProfile } = props;
   return (
     <>
       {/* Mock Background Content to show overlay effect */}
@@ -52,14 +56,14 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       {/* User Identity */}
       <div className="flex flex-col items-center gap-md text-center mt-md">
       <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-container-highest relative">
-      <img alt="Kullanıcı Profili" className="w-full h-full object-cover" data-alt="A professional headshot of a person looking directly at the camera. The lighting is soft and flattering, typical of a high-quality studio portrait. The background is a subtle, out-of-focus gradient. The person has a friendly, approachable expression, fitting for a corporate SaaS application avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYjSylyv_dugd8EpW6SMW_jOZS6MrmN9hZas8SyvfajLBwdpgCzDNsl9SLrwnoAWmx7mKTl9gQJ06NC-z9T5_LjNM4viRMsMHtwVRRCxxZe5WihZII2u5w4nEUNy1syBjuD7xTlh1gxOBOi38NcD9dROnKz5XU8qIOkatsA1PRtnO9SdvvbZgobfD-Jnr8WUn_sRx7w49XphY1Dd_Tc5wb32s-m9mNHqZbm1saF3TLGjeYGfgNYkO-fnAgLS-eBDzH7Y80QZisS9gr" />
+      <img alt="Kullanıcı Profili" className="w-full h-full object-cover" data-alt="A professional headshot of a person looking directly at the camera. The lighting is soft and flattering, typical of a high-quality studio portrait. The background is a subtle, out-of-focus gradient. The person has a friendly, approachable expression, fitting for a corporate SaaS application avatar." src={userProfile.avatarUrl} />
       <button className="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-colors" title="Fotoğrafı Değiştir">
       <span className="material-symbols-outlined text-[16px] text-on-surface-variant">edit</span>
       </button>
       </div>
       <div>
-      <h3 className="font-h2 text-h2 text-on-surface mb-xs">Ahmet Yılmaz</h3>
-      <p className="font-body-sm text-body-sm text-on-surface-variant">ahmet.yilmaz@sirket.com</p>
+      <h3 className="font-h2 text-h2 text-on-surface mb-xs">{userProfile.displayName}</h3>
+      <p className="font-body-sm text-body-sm text-on-surface-variant">{userProfile.email}</p>
       </div>
       <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/10 border border-primary-container/20 rounded-full mt-2">
       <span className="w-2 h-2 rounded-full bg-primary-container"></span>
@@ -80,7 +84,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       <hr className="border-outline-variant" />
       {/* Navigation Links */}
       <nav className="flex flex-col gap-sm">
-      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
+      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => { e.preventDefault(); onOpenAccount(); }}>
       <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">person</span>
       <span className="font-label-md text-label-md">Hesap Ayarları</span>
       </a>
