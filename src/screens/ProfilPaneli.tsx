@@ -9,9 +9,15 @@
 
 import { useState } from "react";
 
-interface ProfilPaneliProps {}
+interface ProfilPaneliProps {
+  onClose: () => void;
+  onOpenSettings: () => void;
+  activeNotesCount: number;
+  collectionsCount: number;
+}
 
 export function ProfilPaneli(props: ProfilPaneliProps) {
+  const { onClose, onOpenSettings, activeNotesCount, collectionsCount } = props;
   return (
     <>
       {/* Mock Background Content to show overlay effect */}
@@ -37,7 +43,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       {/* Header */}
       <div className="flex items-center justify-between p-lg border-b border-outline-variant">
       <h2 className="font-h3 text-h3 text-on-surface">Profil</h2>
-      <button aria-label="Kapat" className="w-touch-target h-touch-target flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container">
+      <button aria-label="Kapat" className="w-touch-target h-touch-target flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container" onClick={onClose}>
       <span className="material-symbols-outlined text-on-surface-variant">close</span>
       </button>
       </div>
@@ -63,31 +69,31 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       {/* Stats/Summary Bento Grid */}
       <div className="grid grid-cols-2 gap-md">
       <div className="bg-surface rounded-lg border border-outline-variant p-md flex flex-col items-center text-center">
-      <span className="font-h2 text-h2 text-primary-fixed mb-xs">142</span>
+      <span className="font-h2 text-h2 text-primary-fixed mb-xs">{activeNotesCount}</span>
       <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Aktif Not</span>
       </div>
       <div className="bg-surface rounded-lg border border-outline-variant p-md flex flex-col items-center text-center">
-      <span className="font-h2 text-h2 text-secondary mb-xs">15</span>
+      <span className="font-h2 text-h2 text-secondary mb-xs">{collectionsCount}</span>
       <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Koleksiyon</span>
       </div>
       </div>
       <hr className="border-outline-variant" />
       {/* Navigation Links */}
       <nav className="flex flex-col gap-sm">
-      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">person</span>
       <span className="font-label-md text-label-md">Hesap Ayarları</span>
       </a>
-      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => { e.preventDefault(); onOpenSettings(); }}>
       <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">palette</span>
       <span className="font-label-md text-label-md">Görünüm</span>
       <span className="ml-auto font-label-sm text-label-sm text-on-surface-variant bg-surface px-2 py-1 rounded border border-outline-variant">Koyu</span>
       </a>
-      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">security</span>
       <span className="font-label-md text-label-md">Güvenlik</span>
       </a>
-      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">credit_card</span>
       <span className="font-label-md text-label-md">Abonelik</span>
       </a>
@@ -95,7 +101,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       </div>
       {/* Footer Actions */}
       <div className="p-lg border-t border-outline-variant bg-surface-container mt-auto">
-      <button className="w-full flex items-center justify-center gap-md h-touch-target rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-highest hover:text-error hover:border-error/50 transition-all focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-surface-container">
+      <button className="w-full flex items-center justify-center gap-md h-touch-target rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-highest hover:text-error hover:border-error/50 transition-all focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-surface-container" onClick={onClose}>
       <span className="material-symbols-outlined">logout</span>
       <span className="font-label-md text-label-md">Çıkış Yap</span>
       </button>

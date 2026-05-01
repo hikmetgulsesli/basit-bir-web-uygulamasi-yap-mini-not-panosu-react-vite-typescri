@@ -8,10 +8,36 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
+import type { Note } from "../types/domain";
 
-interface NotDetayiProps {}
+interface NotDetayiProps {
+  note: Note | null;
+  onBack: () => void;
+  onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
+  onToggleTodo: (noteId: string, todoId: string) => void;
+}
+
+function formatDateFull(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
+}
 
 export function NotDetayi(props: NotDetayiProps) {
+  const { note, onBack, onEdit, onDelete, onToggleTodo } = props;
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+
+  if (!note) {
+    return (
+      <main className="flex-1 w-full flex justify-center pt-[80px] md:pt-0 overflow-y-auto">
+        <div className="w-full max-w-[1000px] px-lg md:px-xl py-xl md:py-2xl flex flex-col gap-xl items-center">
+          <span className="material-symbols-outlined text-6xl text-outline opacity-60">note_off</span>
+          <h1 className="font-h1 text-h1 text-on-surface">Not Bulunamadı</h1>
+          <button className="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg hover:brightness-110 transition-all" onClick={onBack}>Geri Dön</button>
+        </div>
+      </main>
+    );
+  }
   return (
     <>
       {/* Mobile TopNavBar (from Shared Components JSON) */}
@@ -85,7 +111,7 @@ export function NotDetayi(props: NotDetayiProps) {
       {/* Top Action Bar */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-md">
       {/* Back Button */}
-      <button className="group flex items-center gap-sm text-on-surface-variant hover:text-on-surface transition-colors">
+      <button className="group flex items-center gap-sm text-on-surface-variant hover:text-on-surface transition-colors" onClick={onBack}>
       <div className="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-highest group-hover:bg-surface-container-high transition-colors">
       <span className="material-symbols-outlined text-[20px]">arrow_back</span>
       </div>
@@ -102,11 +128,11 @@ export function NotDetayi(props: NotDetayiProps) {
       <span className="hidden md:inline">Paylaş</span>
       </button>
       <div className="w-[1px] h-6 bg-outline-variant mx-xs"></div>
-      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-error hover:bg-error-container/20 transition-colors font-label-md text-label-md" title="Sil">
+      <button className="h-10 px-md flex items-center justify-center gap-xs rounded-full text-error hover:bg-error-container/20 transition-colors font-label-md text-label-md" title="Sil" onClick={() => setShowConfirmDelete(true)}>
       <span className="material-symbols-outlined text-[18px]">delete</span>
       <span className="hidden md:inline">Sil</span>
       </button>
-      <button className="h-10 px-lg flex items-center justify-center gap-xs rounded-full bg-primary-container text-on-primary-container hover:brightness-110 transition-all font-label-md text-label-md ml-xs shadow-md">
+      <button className="h-10 px-lg flex items-center justify-center gap-xs rounded-full bg-primary-container text-on-primary-container hover:brightness-110 transition-all font-label-md text-label-md ml-xs shadow-md" onClick={() => onEdit(note.id)}>
       <span className="material-symbols-outlined text-[18px]" style={{fontVariationSettings: "'FILL' 1"}}>edit</span>
                               Düzenle
                           </button>
@@ -117,27 +143,24 @@ export function NotDetayi(props: NotDetayiProps) {
       {/* Chips / Categories */}
       <div className="flex flex-wrap items-center gap-sm">
       <span className="inline-flex items-center h-6 px-unit rounded bg-primary-container/20 border border-primary-container/30 text-primary font-label-sm text-label-sm">
-                              Strateji
+                              {note.category || 'Genel'}
                           </span>
-      <span className="inline-flex items-center h-6 px-unit rounded bg-tertiary-container/20 border border-tertiary-container/30 text-tertiary font-label-sm text-label-sm">
-                              Q4 2023
-                          </span>
-      <span className="inline-flex items-center h-6 px-unit rounded bg-error-container/20 border border-error-container/30 text-error font-label-sm text-label-sm">
+      {note.important && <span className="inline-flex items-center h-6 px-unit rounded bg-error-container/20 border border-error-container/30 text-error font-label-sm text-label-sm">
       <span className="material-symbols-outlined text-[12px] mr-1">bolt</span>
                               Önemli
-                          </span>
+                          </span>}
       </div>
       <h1 className="font-h1 text-h1 text-on-surface tracking-tight">
-                          Yeni Nesil SaaS Platformu İçin Pazarlama Stratejisi ve Büyüme Hedefleri
+                          {note.title}
                       </h1>
       <div className="flex items-center gap-lg font-body-sm text-body-sm text-on-surface-variant border-b border-outline-variant/50 pb-lg">
       <div className="flex items-center gap-xs">
       <span className="material-symbols-outlined text-[16px]">calendar_today</span>
-                              Oluşturulma: 12 Ekim 2023
+                              Oluşturulma: {formatDateFull(note.createdAt)}
                           </div>
       <div className="flex items-center gap-xs">
       <span className="material-symbols-outlined text-[16px]">update</span>
-                              Son Güncelleme: 14 Ekim 2023, 14:30
+                              Son Güncelleme: {formatDateFull(note.updatedAt)}
                           </div>
       <div className="flex items-center gap-xs ml-auto hidden md:flex">
       <span className="material-symbols-outlined text-[16px]">visibility</span>
@@ -150,48 +173,24 @@ export function NotDetayi(props: NotDetayiProps) {
       {/* Subtle gradient accent at top of panel */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-tertiary to-background"></div>
       <div className="font-body-lg text-body-lg text-on-surface-variant space-y-lg leading-relaxed">
-      <p className="font-h3 text-h3 text-on-surface mb-md">1. Yönetici Özeti</p>
-      <p>
-                              Önümüzdeki çeyrek için temel odak noktamız, kurumsal düzeydeki kullanıcılar arasında ürün benimsenmesini artırmak olacaktır. Mevcut veriler, bireysel kullanıcıların sistemi oldukça verimli bulduğunu, ancak takım işbirliği özelliklerinin yeterince keşfedilmediğini göstermektedir. Bu nedenle, iletişim tonumuzu "bireysel verimlilikten" ziyade "takım senkronizasyonu ve ölçeklenebilirlik" yönüne kaydırmalıyız.
-                          </p>
-      <p className="font-h3 text-h3 text-on-surface mt-xl mb-md">2. Hedef Kitle Analizi</p>
-      <p>
-                              Yeni stratejimizde hedef kitlemizi daraltarak, orta ölçekli teknoloji şirketlerindeki ürün yöneticileri ve operasyon direktörlerine odaklanacağız. Bu kitle, bilgi dağınıklığından şikayetçi ve entegre çözümler arıyor.
-                          </p>
-      <ul className="list-none space-y-md mt-md pl-sm border-l-2 border-primary-container/50">
-      <li className="flex gap-md">
-      <span className="material-symbols-outlined text-primary mt-1 text-[20px]">check_circle</span>
-      <div>
-      <strong className="text-on-surface font-label-md text-label-md block">Acı Noktası (Pain Point):</strong>
-                                      Araç yorgunluğu ve veri siloları. Bilgiyi bulmak için çok fazla zaman harcanıyor.
-                                  </div>
-      </li>
-      <li className="flex gap-md">
-      <span className="material-symbols-outlined text-primary mt-1 text-[20px]">check_circle</span>
-      <div>
-      <strong className="text-on-surface font-label-md text-label-md block">Değer Önerimiz:</strong>
-                                      Tek merkezden yönetilebilen, hiyerarşik ama esnek bir bilgi mimarisi sunmak.
-                                  </div>
-      </li>
-      </ul>
-      <p className="font-h3 text-h3 text-on-surface mt-xl mb-md">3. Aksiyon Planı ve Metrikler</p>
-      <div className="bg-surface-container-highest rounded-lg p-md border border-outline-variant/40">
-      <p className="mb-sm text-on-surface">Bu stratejinin başarısını ölçmek için takip edilecek temel KPI'lar:</p>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-md mt-md">
-      <div className="bg-surface-container rounded p-md">
-      <div className="font-h2 text-h2 text-primary">+%45</div>
-      <div className="font-label-sm text-label-sm text-on-surface-variant mt-xs">Takım Davetiye Oranı</div>
-      </div>
-      <div className="bg-surface-container rounded p-md">
-      <div className="font-h2 text-h2 text-tertiary">-12%</div>
-      <div className="font-label-sm text-label-sm text-on-surface-variant mt-xs">Kayıp (Churn) Oranı</div>
-      </div>
-      <div className="bg-surface-container rounded p-md">
-      <div className="font-h2 text-h2 text-secondary">2.5x</div>
-      <div className="font-label-sm text-label-sm text-on-surface-variant mt-xs">Ortalama Oturum Süresi</div>
-      </div>
-      </div>
-      </div>
+      <p className="whitespace-pre-wrap">{note.content}</p>
+      {note.todos.length > 0 && (
+        <div className="mt-xl">
+          <p className="font-h3 text-h3 text-on-surface mb-md">Görevler</p>
+          <ul className="list-none space-y-md mt-md pl-sm border-l-2 border-primary-container/50">
+            {note.todos.map((todo) => (
+              <li key={todo.id} className="flex gap-md">
+                <span className="material-symbols-outlined text-primary mt-1 text-[20px] cursor-pointer" onClick={() => onToggleTodo(note.id, todo.id)}>
+                  {todo.completed ? 'check_circle' : 'radio_button_unchecked'}
+                </span>
+                <div className={`font-body-sm ${todo.completed ? 'line-through text-slate-500' : 'text-on-surface-variant'}`}>
+                  {todo.text}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       </div>
       </article>
       {/* Bento Box: Linked Assets / Context */}
@@ -219,17 +218,30 @@ export function NotDetayi(props: NotDetayiProps) {
                               Bağlantılı Notlar
                           </h3>
       <div className="flex flex-col gap-xs">
-      <a className="font-body-sm text-body-sm text-primary hover:underline flex items-center gap-xs" href="#">
+      <a className="font-body-sm text-body-sm text-primary hover:underline flex items-center gap-xs" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined text-[14px]">arrow_right_alt</span>
                                   Rakip Analizi Raporu (Eylül)
                               </a>
-      <a className="font-body-sm text-body-sm text-primary hover:underline flex items-center gap-xs" href="#">
+      <a className="font-body-sm text-body-sm text-primary hover:underline flex items-center gap-xs" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined text-[14px]">arrow_right_alt</span>
                                   Tasarım Sistemi Güncellemeleri
                               </a>
       </div>
       </div>
       </div>
+      {/* Delete Confirmation */}
+      {showConfirmDelete && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">
+            <h2 className="font-h2 text-h2 text-on-surface mb-2">Notu Sil</h2>
+            <p className="font-body-md text-body-md text-on-surface-variant mb-6">Bu notu kalıcı olarak silmek istediğinize emin misiniz?</p>
+            <div className="flex gap-3 justify-end">
+              <button className="h-[44px] px-6 rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors" onClick={() => setShowConfirmDelete(false)}>İptal</button>
+              <button className="h-[44px] px-6 rounded-lg bg-error text-on-error hover:bg-error/90 transition-colors" onClick={() => { onDelete(note.id); setShowConfirmDelete(false); }}>Sil</button>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
       </main>
     </>

@@ -8,10 +8,18 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
+import type { AppPreferences } from "../types/domain";
 
-interface AyarlarProps {}
+interface AyarlarProps {
+  preferences: AppPreferences;
+  onPreferencesChange: (prefs: Partial<AppPreferences>) => void;
+  onClearData: () => void;
+  onBack: () => void;
+}
 
 export function Ayarlar(props: AyarlarProps) {
+  const { preferences, onPreferencesChange, onClearData, onBack } = props;
+  const [showConfirmClear, setShowConfirmClear] = useState(false);
   return (
     <>
       {/* SideNavBar (Hidden on Mobile) */}
@@ -24,35 +32,35 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="text-slate-400 text-xs mt-1">Not Yönetimi</div>
       </div>
       </div>
-      <button className="mt-6 w-full bg-blue-600 text-white font-label-md text-label-md rounded-lg py-2.5 px-4 hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
-      <span className="material-symbols-outlined text-sm">add</span>
-                      Yeni Koleksiyon
+      <button className="mt-6 w-full bg-blue-600 text-white font-label-md text-label-md rounded-lg py-2.5 px-4 hover:bg-blue-700 transition-colors flex items-center justify-center gap-2" onClick={onBack}>
+      <span className="material-symbols-outlined text-sm">arrow_back</span>
+                      Dashboard'a Dön
                   </button>
       </div>
       <div className="flex-1 overflow-y-auto py-4">
-      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800" href="#">
+      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined">description</span>
                       Notlarım
                   </a>
-      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800" href="#">
+      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined">archive</span>
                       Arşiv
                   </a>
-      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800" href="#">
+      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined">checklist</span>
                       Görevler
                   </a>
-      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800" href="#">
+      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined">delete</span>
                       Çöp Kutusu
                   </a>
       </div>
       <div className="p-4 border-t border-slate-800">
-      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800" href="#">
+      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined">help</span>
                       Destek
                   </a>
-      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800" href="#">
+      <a className="text-slate-400 hover:bg-slate-800/50 px-4 py-3 flex items-center gap-3 transition-all hover:bg-slate-800 cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined">logout</span>
                       Çıkış
                   </a>
@@ -64,14 +72,14 @@ export function Ayarlar(props: AyarlarProps) {
       <header className="fixed top-0 w-full flex items-center justify-between px-6 h-16 bg-slate-950/80 backdrop-blur-md text-blue-600 dark:text-blue-500 font-inter text-sm font-medium tracking-tight docked full-width top-0 z-50 border-b border-slate-800 active:scale-95 duration-200">
       <div className="flex items-center gap-6">
       {/* Mobile Menu Toggle */}
-      <button className="lg:hidden text-slate-50 hover:bg-slate-900/50 p-2 rounded-lg transition-colors">
-      <span className="material-symbols-outlined">menu</span>
+      <button className="lg:hidden text-slate-50 hover:bg-slate-900/50 p-2 rounded-lg transition-colors" onClick={onBack}>
+      <span className="material-symbols-outlined">arrow_back</span>
       </button>
       <div className="text-lg font-bold tracking-tighter text-slate-50 lg:hidden">Mini Not Panosu</div>
       <nav className="hidden md:flex items-center gap-1 h-full">
-      <a className="text-slate-400 hover:text-slate-200 transition-colors h-full flex items-center px-3 hover:bg-slate-900/50" href="#">Dashboard</a>
-      <a className="text-slate-400 hover:text-slate-200 transition-colors h-full flex items-center px-3 hover:bg-slate-900/50" href="#">İstatistikler</a>
-      <a className="text-blue-500 border-b-2 border-blue-600 pb-1 h-full flex items-center px-3 hover:bg-slate-900/50" href="#">Ayarlar</a>
+      <a className="text-slate-400 hover:text-slate-200 transition-colors h-full flex items-center px-3 hover:bg-slate-900/50 cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>Dashboard</a>
+      <a className="text-slate-400 hover:text-slate-200 transition-colors h-full flex items-center px-3 hover:bg-slate-900/50 cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>İstatistikler</a>
+      <a className="text-blue-500 border-b-2 border-blue-600 pb-1 h-full flex items-center px-3 hover:bg-slate-900/50" href="#" onClick={(e) => e.preventDefault()}>Ayarlar</a>
       </nav>
       </div>
       <div className="flex items-center gap-4">
@@ -79,15 +87,15 @@ export function Ayarlar(props: AyarlarProps) {
       <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
       <input className="bg-slate-900 border border-slate-800 rounded-full pl-9 pr-4 py-1.5 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 w-48 lg:w-64 text-slate-200 placeholder-slate-500 transition-all" placeholder="Notlarda ara..." type="text" />
       </div>
-      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center">
+      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center" aria-label="Bildirimler">
       <span className="material-symbols-outlined">notifications</span>
       </button>
-      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center">
+      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center" aria-label="Profil">
       <span className="material-symbols-outlined">account_circle</span>
       </button>
-      <button className="hidden sm:flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors items-center gap-2">
-      <span className="material-symbols-outlined text-sm">add</span>
-                          Not Ekle
+      <button className="hidden sm:flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors items-center gap-2" onClick={onBack}>
+      <span className="material-symbols-outlined text-sm">arrow_back</span>
+                          Dashboard
                       </button>
       </div>
       </header>
@@ -132,7 +140,7 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {/* Theme Option: Dark (Active) */}
       <label className="relative cursor-pointer group">
-      <input checked={true} className="peer sr-only" name="theme" type="radio" value="dark" />
+      <input checked={preferences.theme === 'dark'} className="peer sr-only" name="theme" type="radio" value="dark" onChange={() => onPreferencesChange({ theme: 'dark' })} />
       <div className="rounded-lg border-2 border-primary bg-surface-container p-4 flex flex-col items-center gap-3 peer-focus-visible:ring-2 peer-focus-visible:ring-primary peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background">
       <div className="w-full h-24 bg-[#0F172A] rounded border border-[#334155] flex flex-col p-2 gap-2">
       <div className="w-full h-3 bg-[#1E293B] rounded"></div>
@@ -148,7 +156,7 @@ export function Ayarlar(props: AyarlarProps) {
       </label>
       {/* Theme Option: Light */}
       <label className="relative cursor-pointer group">
-      <input className="peer sr-only" name="theme" type="radio" value="light" />
+      <input checked={preferences.theme === 'light'} className="peer sr-only" name="theme" type="radio" value="light" onChange={() => onPreferencesChange({ theme: 'light' })} />
       <div className="rounded-lg border-2 border-[#334155] hover:border-outline-variant bg-surface-container p-4 flex flex-col items-center gap-3 transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-primary peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background">
       <div className="w-full h-24 bg-white rounded border border-gray-200 flex flex-col p-2 gap-2">
       <div className="w-full h-3 bg-gray-100 rounded"></div>
@@ -164,7 +172,7 @@ export function Ayarlar(props: AyarlarProps) {
       </label>
       {/* Theme Option: System */}
       <label className="relative cursor-pointer group">
-      <input className="peer sr-only" name="theme" type="radio" value="system" />
+      <input checked={preferences.theme === 'system'} className="peer sr-only" name="theme" type="radio" value="system" onChange={() => onPreferencesChange({ theme: 'system' })} />
       <div className="rounded-lg border-2 border-[#334155] hover:border-outline-variant bg-surface-container p-4 flex flex-col items-center gap-3 transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-primary peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background">
       <div className="w-full h-24 rounded border border-[#334155] flex overflow-hidden">
       <div className="w-1/2 h-full bg-white flex flex-col p-2 gap-2">
@@ -189,7 +197,7 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="font-body-sm text-body-sm text-on-surface-variant">Notları listelerken daha az boşluk kullan.</div>
       </div>
       <label className="relative inline-flex items-center cursor-pointer">
-      <input className="sr-only peer" type="checkbox" value="" />
+      <input className="sr-only peer" type="checkbox" checked={preferences.compactView} onChange={(e) => onPreferencesChange({ compactView: e.target.checked })} />
       <div className="w-11 h-6 bg-surface-container-highest peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2 peer-focus:ring-offset-background rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
       </label>
       </div>
@@ -248,7 +256,7 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="font-label-md text-label-md text-error-container dark:text-error">Yerel Verileri Temizle</div>
       <div className="font-body-sm text-body-sm text-on-surface-variant mt-1">Bu cihazdaki tüm notları, tercihleri ve önbelleği kalıcı olarak siler. Bu işlem geri alınamaz.</div>
       </div>
-      <button className="shrink-0 h-[44px] px-6 inline-flex items-center justify-center gap-2 rounded-lg bg-error hover:bg-error/90 text-on-error font-label-md text-label-md transition-colors focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-background active:scale-[0.98]" type="button">
+      <button className="shrink-0 h-[44px] px-6 inline-flex items-center justify-center gap-2 rounded-lg bg-error hover:bg-error/90 text-on-error font-label-md text-label-md transition-colors focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-background active:scale-[0.98]" type="button" onClick={() => setShowConfirmClear(true)}>
       <span className="material-symbols-outlined text-[18px]">delete_forever</span>
                                       Verileri Temizle
                                   </button>
@@ -256,10 +264,10 @@ export function Ayarlar(props: AyarlarProps) {
       </section>
       {/* Action Bar */}
       <div className="flex items-center justify-end gap-4 pt-4 border-t border-[#334155]">
-      <button className="h-[44px] px-6 inline-flex items-center justify-center rounded-lg border border-[#334155] text-[#F8FAFC] hover:bg-surface-container-high font-label-md text-label-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background active:scale-[0.98]" type="button">
+      <button className="h-[44px] px-6 inline-flex items-center justify-center rounded-lg border border-[#334155] text-[#F8FAFC] hover:bg-surface-container-high font-label-md text-label-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background active:scale-[0.98]" type="button" onClick={onBack}>
                                   İptal
                               </button>
-      <button className="h-[44px] px-8 inline-flex items-center justify-center rounded-lg bg-[#2563EB] hover:bg-[#2563EB]/90 text-[#FFFFFF] font-label-md text-label-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background shadow-[0px_4px_10px_rgba(37,99,235,0.2)] active:scale-[0.98]" type="button">
+      <button className="h-[44px] px-8 inline-flex items-center justify-center rounded-lg bg-[#2563EB] hover:bg-[#2563EB]/90 text-[#FFFFFF] font-label-md text-label-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background shadow-[0px_4px_10px_rgba(37,99,235,0.2)] active:scale-[0.98]" type="button" onClick={onBack}>
                                   Değişiklikleri Kaydet
                               </button>
       </div>
@@ -267,6 +275,19 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       </main>
       </div>
+      {/* Clear Data Confirmation */}
+      {showConfirmClear && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">
+            <h2 className="font-h2 text-h2 text-error mb-2">Tüm Verileri Sil</h2>
+            <p className="font-body-md text-body-md text-on-surface-variant mb-6">Tüm notlarınız ve tercihleriniz kalıcı olarak silinecek. Bu işlem geri alınamaz.</p>
+            <div className="flex gap-3 justify-end">
+              <button className="h-[44px] px-6 rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors" onClick={() => setShowConfirmClear(false)}>İptal</button>
+              <button className="h-[44px] px-6 rounded-lg bg-error text-on-error hover:bg-error/90 transition-colors" onClick={() => { onClearData(); setShowConfirmClear(false); }}>Sil</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
