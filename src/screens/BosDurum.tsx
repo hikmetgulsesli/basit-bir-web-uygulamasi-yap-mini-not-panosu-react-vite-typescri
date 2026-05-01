@@ -40,7 +40,7 @@ export function BosDurum(props: BosDurumProps) {
                       Not Ekle
                   </button>
       <div className="flex items-center gap-3">
-      <button aria-label="Bildirimler" className="w-[44px] h-[44px] flex items-center justify-center text-slate-400 opacity-50 cursor-not-allowed rounded-full" disabled title="Bildirimler (yakında)">
+      <button aria-label="Bildirimler" className="w-[44px] h-[44px] flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors hover:bg-slate-900/50 rounded-full active:scale-95 duration-200">
       <span className="material-symbols-outlined">notifications</span>
       </button>
       <button aria-label="Profil" className="w-[44px] h-[44px] flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors hover:bg-slate-900/50 rounded-full active:scale-95 duration-200" onClick={onOpenProfile}>
@@ -57,7 +57,7 @@ export function BosDurum(props: BosDurumProps) {
       <span className="material-symbols-outlined text-on-surface-variant">person</span>
       </div>
       <div>
-      <div className="text-on-surface font-label-md text-label-md">Profesyonel Panel</div>
+      <h2 className="text-on-surface font-label-md text-label-md">Profesyonel Panel</h2>
       <p className="text-on-surface-variant font-body-sm text-body-sm">Not Yönetimi</p>
       </div>
       </div>

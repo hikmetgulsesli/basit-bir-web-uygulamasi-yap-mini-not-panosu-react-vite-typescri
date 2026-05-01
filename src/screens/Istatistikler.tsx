@@ -64,10 +64,10 @@ export function Istatistikler(props: IstatistiklerProps) {
                       Not Ekle
                   </button>
       <div className="flex items-center gap-sm text-blue-600 dark:text-blue-500">
-      <button className="h-touch-target w-touch-target rounded-full flex items-center justify-center opacity-50 cursor-not-allowed" aria-label="Bildirimler" disabled title="Bildirimler (yakında)">
+      <button className="h-touch-target w-touch-target rounded-full flex items-center justify-center hover:bg-slate-900/50 active:scale-95 duration-200 transition-colors" aria-label="Bildirimler">
       <span className="material-symbols-outlined" data-icon="notifications">notifications</span>
       </button>
-      <button className="h-touch-target w-touch-target rounded-full flex items-center justify-center opacity-50 cursor-not-allowed" aria-label="Profil" disabled title="Profil (yakında)">
+      <button className="h-touch-target w-touch-target rounded-full flex items-center justify-center hover:bg-slate-900/50 active:scale-95 duration-200 transition-colors" aria-label="Profil">
       <span className="material-symbols-outlined" data-icon="account_circle">account_circle</span>
       </button>
       </div>
@@ -82,7 +82,7 @@ export function Istatistikler(props: IstatistiklerProps) {
       <span className="material-symbols-outlined text-outline text-2xl">person</span>
       </div>
       <div>
-      <div className="text-xl font-black text-slate-50 leading-tight">Profesyonel Panel</div>
+      <h2 className="text-xl font-black text-slate-50 leading-tight">Profesyonel Panel</h2>
       <p className="text-slate-400 font-label-sm text-label-sm">Not Yönetimi</p>
       </div>
       </div>
@@ -129,9 +129,9 @@ export function Istatistikler(props: IstatistiklerProps) {
       <p className="font-body-md text-body-md text-on-surface-variant">Çalışma verimliliğiniz ve not alışkanlıklarınızın özeti.</p>
       </div>
       <div className="flex items-center gap-sm bg-surface-container rounded-DEFAULT p-xs border border-outline-variant">
-      <button className="px-md py-sm rounded-DEFAULT bg-primary-container text-on-primary-container font-label-md text-label-md opacity-50 cursor-not-allowed" disabled>Bu Hafta</button>
-      <button className="px-md py-sm rounded-DEFAULT text-on-surface-variant font-label-md text-label-md opacity-50 cursor-not-allowed" disabled>Bu Ay</button>
-      <button className="px-md py-sm rounded-DEFAULT text-on-surface-variant font-label-md text-label-md opacity-50 cursor-not-allowed" disabled>Tümü</button>
+      <button className="px-md py-sm rounded-DEFAULT bg-primary-container text-on-primary-container font-label-md text-label-md">Bu Hafta</button>
+      <button className="px-md py-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md">Bu Ay</button>
+      <button className="px-md py-sm rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md">Tümü</button>
       </div>
       </div>
       {/* Bento Grid */}
@@ -194,7 +194,7 @@ export function Istatistikler(props: IstatistiklerProps) {
       <div className="bg-[#1E293B] border border-[#334155] rounded-xl p-[20px] lg:col-span-2 flex flex-col">
       <div className="flex justify-between items-center mb-xl">
       <h3 className="font-h3 text-h3 text-on-surface">Kategori Dağılımı</h3>
-      <button className="text-primary/50 cursor-not-allowed transition-colors" disabled aria-label="Daha fazla seçenek" title="Daha fazla seçenek (yakında)">
+      <button className="text-primary hover:text-primary-fixed transition-colors">
       <span className="material-symbols-outlined">more_horiz</span>
       </button>
       </div>

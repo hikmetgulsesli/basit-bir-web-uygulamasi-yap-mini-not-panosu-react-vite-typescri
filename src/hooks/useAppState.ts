@@ -13,10 +13,9 @@ const initialPreferences: AppPreferences = {
   compactView: false,
 };
 
-const initialUserProfile: UserProfile = {
-  displayName: 'Ahmet Yılmaz',
-  email: 'ahmet.yilmaz@sirket.com',
-  avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAYjSylyv_dugd8EpW6SMW_jOZS6MrmN9hZas8SyvfajLBwdpgCzDNsl9SLrwnoAWmx7mKTl9gQJ06NC-z9T5_LjNM4viRMsMHtwVRRCxxZe5WihZII2u5w4nEUNy1syBjuD7xTlh1gxOBOi38NcD9dROnKz5XU8qIOkatsA1PRtnO9SdvvbZgobfD-Jnr8WUn_sRx7w49XphY1Dd_Tc5wb32s-m9mNHqZbm1saF3TLGjeYGfgNYkO-fnAgLS-eBDzH7Y80QZisS9gr',
+const initialUserProfile = {
+  displayName: 'Kullanıcı',
+  email: 'kullanici@example.com',
 };
 
 const initialState: AppState = {
@@ -100,7 +99,7 @@ function reducer(state: AppState, action: Action): AppState {
       return { ...state, userProfile };
     }
     case 'CLEAR_ALL': {
-      return { ...initialState, preferences: state.preferences, userProfile: state.userProfile };
+      return { ...initialState, preferences: state.preferences };
     }
     default:
       return state;

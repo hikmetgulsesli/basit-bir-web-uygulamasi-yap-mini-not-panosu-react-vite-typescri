@@ -64,10 +64,10 @@ export function NotDetayi(props: NotDetayiProps) {
               </div>
       <div className="flex items-center gap-unit font-inter text-sm font-medium tracking-tight">
       {/* Supressed main links to prioritize detail view on mobile, keeping actions */}
-      <button className="w-touch-target h-touch-target flex items-center justify-center text-slate-400 opacity-50 cursor-not-allowed rounded-full" disabled aria-label="Bildirimler" title="Bildirimler (yakında)">
+      <button className="w-touch-target h-touch-target flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors hover:bg-slate-900/50 rounded-full active:scale-95 duration-200">
       <span className="material-symbols-outlined">notifications</span>
       </button>
-      <button className="w-touch-target h-touch-target flex items-center justify-center text-slate-400 opacity-50 cursor-not-allowed rounded-full" disabled aria-label="Profil" title="Profil (yakında)">
+      <button className="w-touch-target h-touch-target flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors hover:bg-slate-900/50 rounded-full active:scale-95 duration-200">
       <span className="material-symbols-outlined">account_circle</span>
       </button>
       </div>
@@ -78,7 +78,7 @@ export function NotDetayi(props: NotDetayiProps) {
       <div className="p-6 border-b border-slate-800 flex flex-col gap-xs">
       <div className="flex items-center gap-sm">
       <span className="material-symbols-outlined text-blue-600 text-xl">account_circle</span>
-      <div className="text-xl font-black text-slate-50 font-inter antialiased">Profesyonel Panel</div>
+      <h2 className="text-xl font-black text-slate-50 font-inter antialiased">Profesyonel Panel</h2>
       </div>
       <span className="font-inter text-sm antialiased text-blue-600 pl-8">Not Yönetimi</span>
       </div>

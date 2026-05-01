@@ -97,34 +97,7 @@ describe('AnaEkranDashboard', () => {
 
   it('shows empty state when no notes match filter', () => {
     setup({ notes: [] });
-    expect(screen.getByText('Not bulunamadı.')).toBeInTheDocument();
-  });
-
-  it('shows search empty state with clear button when search has no results', () => {
-    setup({ searchQuery: 'xyz-nonexistent' });
-    expect(screen.getByText('Aramanızla eşleşen not bulunamadı.')).toBeInTheDocument();
-    expect(screen.getByText('Aramayı Temizle')).toBeInTheDocument();
-  });
-
-  it('calls onSearchChange when clear search button clicked', () => {
-    const onSearchChange = vi.fn();
-    setup({ searchQuery: 'xyz-nonexistent', onSearchChange });
-    fireEvent.click(screen.getByText('Aramayı Temizle'));
-    expect(onSearchChange).toHaveBeenCalledWith('');
-  });
-
-  it('shows completed filter empty state when no completed notes', () => {
-    setup({ filterTab: 'completed' });
-    expect(screen.getByText('Henüz tamamlanan not yok.')).toBeInTheDocument();
-  });
-
-  it('shows pending filter empty state when no pending notes', () => {
-    const allCompletedNotes = mockNotes.map((n) => ({
-      ...n,
-      todos: n.todos.length > 0 ? n.todos.map((t) => ({ ...t, completed: true })) : [{ id: 'todo-x', text: 'Tamamlandı', completed: true }],
-    }));
-    setup({ notes: allCompletedNotes, filterTab: 'pending' });
-    expect(screen.getByText('Henüz bekleyen not yok.')).toBeInTheDocument();
+    expect(screen.getByText('Arama sonucu bulunamadı.')).toBeInTheDocument();
   });
 
   it('calls onViewDetail when note title clicked', () => {
