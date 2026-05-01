@@ -8,21 +8,16 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
-import type { UserProfile } from "../types/domain";
 
 interface ProfilPaneliProps {
   onClose: () => void;
   onOpenSettings: () => void;
-  onOpenAccount?: () => void;
   activeNotesCount: number;
   collectionsCount: number;
-  userProfile?: UserProfile;
 }
 
 export function ProfilPaneli(props: ProfilPaneliProps) {
-  const { onClose, onOpenSettings, onOpenAccount, activeNotesCount, collectionsCount, userProfile } = props;
-  const displayName = userProfile?.displayName ?? 'Ahmet Yılmaz';
-  const email = userProfile?.email ?? 'ahmet.yilmaz@sirket.com';
+  const { onClose, onOpenSettings, activeNotesCount, collectionsCount } = props;
   return (
     <>
       {/* Mock Background Content to show overlay effect */}
@@ -63,8 +58,8 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       </button>
       </div>
       <div>
-      <h3 className="font-h2 text-h2 text-on-surface mb-xs">{displayName}</h3>
-      <p className="font-body-sm text-body-sm text-on-surface-variant">{email}</p>
+      <h3 className="font-h2 text-h2 text-on-surface mb-xs">Ahmet Yılmaz</h3>
+      <p className="font-body-sm text-body-sm text-on-surface-variant">ahmet.yilmaz@sirket.com</p>
       </div>
       <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/10 border border-primary-container/20 rounded-full mt-2">
       <span className="w-2 h-2 rounded-full bg-primary-container"></span>
@@ -85,7 +80,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       <hr className="border-outline-variant" />
       {/* Navigation Links */}
       <nav className="flex flex-col gap-sm">
-      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => { e.preventDefault(); onOpenAccount?.(); }}>
+      <a className="flex items-center gap-md px-md py-3 rounded-lg text-on-surface hover:bg-surface-container-highest transition-colors group cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary-fixed transition-colors">person</span>
       <span className="font-label-md text-label-md">Hesap Ayarları</span>
       </a>

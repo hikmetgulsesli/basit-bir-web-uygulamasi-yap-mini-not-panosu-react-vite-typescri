@@ -15,7 +15,6 @@ describe('storage', () => {
       searchQuery: '',
       filterTab: 'all',
       preferences: { theme: 'dark', compactView: false },
-      userProfile: { displayName: 'Test', email: 'test@example.com' },
     };
     saveState(state);
     const loaded = loadState();
@@ -35,7 +34,6 @@ describe('storage', () => {
       searchQuery: '',
       filterTab: 'all',
       preferences: { theme: 'dark', compactView: false },
-      userProfile: { displayName: 'Test', email: 'test@example.com' },
     };
     saveState(state);
     clearState();

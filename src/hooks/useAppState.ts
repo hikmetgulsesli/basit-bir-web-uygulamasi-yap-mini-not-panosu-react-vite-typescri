@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useCallback } from 'react';
-import type { Note, TodoItem, AppState, View, FilterTab, AppPreferences, UserProfile } from '../types/domain';
+import type { Note, TodoItem, AppState, View, FilterTab, AppPreferences } from '../types/domain';
 import { loadState, saveState } from '../utils/storage';
 
 function generateId(): string {
@@ -13,11 +13,6 @@ const initialPreferences: AppPreferences = {
   compactView: false,
 };
 
-const initialUserProfile = {
-  displayName: 'Kullanıcı',
-  email: 'kullanici@example.com',
-};
-
 const initialState: AppState = {
   notes: [],
   view: 'dashboard',
@@ -25,7 +20,6 @@ const initialState: AppState = {
   searchQuery: '',
   filterTab: 'all',
   preferences: initialPreferences,
-  userProfile: initialUserProfile,
 };
 
 export type Action =
@@ -39,7 +33,6 @@ export type Action =
   | { type: 'SET_SEARCH'; payload: string }
   | { type: 'SET_FILTER'; payload: FilterTab }
   | { type: 'SET_PREFERENCES'; payload: Partial<AppPreferences> }
-  | { type: 'SET_USER_PROFILE'; payload: Partial<UserProfile> }
   | { type: 'CLEAR_ALL' };
 
 function reducer(state: AppState, action: Action): AppState {
@@ -94,10 +87,6 @@ function reducer(state: AppState, action: Action): AppState {
       const preferences = { ...state.preferences, ...action.payload };
       return { ...state, preferences };
     }
-    case 'SET_USER_PROFILE': {
-      const userProfile = { ...state.userProfile, ...action.payload };
-      return { ...state, userProfile };
-    }
     case 'CLEAR_ALL': {
       return { ...initialState, preferences: state.preferences };
     }
@@ -118,7 +107,6 @@ export interface UseAppStateReturn {
   setSearch: (query: string) => void;
   setFilter: (tab: FilterTab) => void;
   setPreferences: (prefs: Partial<AppPreferences>) => void;
-  setUserProfile: (profile: Partial<UserProfile>) => void;
   clearAll: () => void;
 }
 
@@ -172,10 +160,6 @@ export function useAppState(): UseAppStateReturn {
     dispatch({ type: 'SET_PREFERENCES', payload: prefs });
   }, []);
 
-  const setUserProfile = useCallback((profile: Partial<UserProfile>) => {
-    dispatch({ type: 'SET_USER_PROFILE', payload: profile });
-  }, []);
-
   const clearAll = useCallback(() => {
     dispatch({ type: 'CLEAR_ALL' });
   }, []);
@@ -192,7 +176,6 @@ export function useAppState(): UseAppStateReturn {
     setSearch,
     setFilter,
     setPreferences,
-    setUserProfile,
     clearAll,
   };
 }
