@@ -27,17 +27,17 @@ export type View =
   | 'profile'
   | 'error';
 
-export interface UserProfile {
-  displayName: string;
-  email: string;
-  avatarUrl?: string;
-}
-
 export type FilterTab = 'all' | 'completed' | 'pending';
 
 export interface AppPreferences {
   theme: 'dark' | 'light' | 'system';
   compactView: boolean;
+}
+
+export interface UserProfile {
+  displayName: string;
+  email: string;
+  avatarUrl?: string;
 }
 
 export interface AppState {
