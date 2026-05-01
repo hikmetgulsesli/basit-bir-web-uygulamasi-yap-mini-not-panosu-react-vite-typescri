@@ -1,0 +1,74 @@
+[
+  {
+    "screenId": "4794635f4a264b61a7c0cc9fed8165d1",
+    "title": "Profil Paneli",
+    "componentName": "ProfilPaneli",
+    "file": "src/screens/ProfilPaneli.tsx",
+    "buttons": 3,
+    "inputs": 0,
+    "links": 4
+  },
+  {
+    "screenId": "bc1cce56f91b4387a3002e16f5c7116e",
+    "title": "Hata Durumu",
+    "componentName": "HataDurumu",
+    "file": "src/screens/HataDurumu.tsx",
+    "buttons": 2,
+    "inputs": 0,
+    "links": 0
+  },
+  {
+    "screenId": "0b9c4ca2e8fd4f8b8dc9a7b971ff3aa1",
+    "title": "Not Ekle/Düzenle",
+    "componentName": "NotEkleduzenle",
+    "file": "src/screens/NotEkleduzenle.tsx",
+    "buttons": 8,
+    "inputs": 5,
+    "links": 0
+  },
+  {
+    "screenId": "c43df50a9c5044bda8299e914aa9db29",
+    "title": "Boş Durum",
+    "componentName": "BosDurum",
+    "file": "src/screens/BosDurum.tsx",
+    "buttons": 5,
+    "inputs": 0,
+    "links": 6
+  },
+  {
+    "screenId": "ae1cc8c90cb24d2d919c6f95fd131a16",
+    "title": "Ana Ekran (Dashboard)",
+    "componentName": "AnaEkranDashboard",
+    "file": "src/screens/AnaEkranDashboard.tsx",
+    "buttons": 16,
+    "inputs": 7,
+    "links": 9
+  },
+  {
+    "screenId": "dd57e2122a42459aa04ca5ed7bcc73ae",
+    "title": "Ayarlar",
+    "componentName": "Ayarlar",
+    "file": "src/screens/Ayarlar.tsx",
+    "buttons": 8,
+    "inputs": 8,
+    "links": 12
+  },
+  {
+    "screenId": "74ec6f58d00746cd97a54908892fd564",
+    "title": "Not Detayı",
+    "componentName": "NotDetayi",
+    "file": "src/screens/NotDetayi.tsx",
+    "buttons": 8,
+    "inputs": 0,
+    "links": 8
+  },
+  {
+    "screenId": "59eb3f83e3e9453e9634c1b3ce969f62",
+    "title": "İstatistikler",
+    "componentName": "Istatistikler",
+    "file": "src/screens/Istatistikler.tsx",
+    "buttons": 8,
+    "inputs": 1,
+    "links": 9
+  }
+]
