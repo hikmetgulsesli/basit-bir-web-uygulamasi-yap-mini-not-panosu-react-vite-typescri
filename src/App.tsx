@@ -8,7 +8,6 @@ import { Ayarlar } from './screens/Ayarlar';
 import { Istatistikler } from './screens/Istatistikler';
 import { HataDurumu } from './screens/HataDurumu';
 import { ProfilPaneli } from './screens/ProfilPaneli';
-import type { UserProfile } from './types/domain';
 import { clearState } from './utils/storage';
 import './App.css';
 
@@ -36,12 +35,6 @@ export default function App() {
     () => Array.from(new Set(state.notes.map((n) => n.category).filter(Boolean))),
     [state.notes]
   );
-
-  const defaultUserProfile: UserProfile = {
-    displayName: 'Kullanıcı',
-    email: 'kullanici@example.com',
-    avatarUrl: 'https://ui-avatars.com/api/?name=Kullanici&background=2563eb&color=fff',
-  };
 
   const handleClearData = () => {
     clearState();
@@ -125,9 +118,7 @@ export default function App() {
         return (
           <Ayarlar
             preferences={state.preferences}
-            userProfile={defaultUserProfile}
             onPreferencesChange={setPreferences}
-            onUserProfileChange={() => {}}
             onClearData={handleClearData}
             onBack={() => setView('dashboard')}
           />
@@ -148,7 +139,6 @@ export default function App() {
             onOpenAccount={() => setView('settings')}
             activeNotesCount={state.notes.length}
             collectionsCount={uniqueCategories.length}
-            userProfile={defaultUserProfile}
           />
         );
       case 'error':

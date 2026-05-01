@@ -12,9 +12,9 @@ import type { AppPreferences, UserProfile } from "../types/domain";
 
 interface AyarlarProps {
   preferences: AppPreferences;
-  userProfile: UserProfile;
+  userProfile?: UserProfile;
   onPreferencesChange: (prefs: Partial<AppPreferences>) => void;
-  onUserProfileChange: (profile: Partial<UserProfile>) => void;
+  onUserProfileChange?: (profile: Partial<UserProfile>) => void;
   onClearData: () => void;
   onBack: () => void;
 }
@@ -136,14 +136,14 @@ export function Ayarlar(props: AyarlarProps) {
                                   </h2>
       <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Profil bilgilerinizi güncelleyin.</p>
       </div>
-      <div className="space-y-6">
+      <div className="space-y-4">
       <div>
-      <label className="block font-label-md text-label-md text-on-surface mb-2" htmlFor="display-name">Görünen Ad</label>
-      <input className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" id="display-name" type="text" value={userProfile.displayName} onChange={(e) => onUserProfileChange({ displayName: e.target.value })} />
+      <label htmlFor="display-name" className="block font-label-md text-label-md text-on-surface mb-2">Görünen Ad</label>
+      <input id="display-name" className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" type="text" value={userProfile?.displayName ?? ''} onChange={(e) => onUserProfileChange?.({ displayName: e.target.value })} />
       </div>
       <div>
-      <label className="block font-label-md text-label-md text-on-surface mb-2" htmlFor="email">E-posta</label>
-      <input className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" id="email" type="email" value={userProfile.email} onChange={(e) => onUserProfileChange({ email: e.target.value })} />
+      <label htmlFor="email" className="block font-label-md text-label-md text-on-surface mb-2">E-posta</label>
+      <input id="email" className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all" type="email" value={userProfile?.email ?? ''} onChange={(e) => onUserProfileChange?.({ email: e.target.value })} />
       </div>
       </div>
       </section>
@@ -218,8 +218,8 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="font-label-md text-label-md text-on-surface">Kompakt Liste Görünümü</div>
       <div className="font-body-sm text-body-sm text-on-surface-variant">Notları listelerken daha az boşluk kullan.</div>
       </div>
-      <label className="relative inline-flex items-center cursor-pointer">
-      <input aria-label="Kompakt Liste Görünümü" className="sr-only peer" type="checkbox" checked={preferences.compactView} onChange={(e) => onPreferencesChange({ compactView: e.target.checked })} />
+      <label htmlFor="compact-view" className="relative inline-flex items-center cursor-pointer">
+      <input id="compact-view" aria-label="Kompakt Liste Görünümü" className="sr-only peer" type="checkbox" checked={preferences.compactView} onChange={(e) => onPreferencesChange({ compactView: e.target.checked })} />
       <div className="w-11 h-6 bg-surface-container-highest peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2 peer-focus:ring-offset-background rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
       </label>
       </div>
@@ -237,7 +237,7 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="space-y-4">
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input readOnly checked={true} className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="not-hatirlatici" type="checkbox" />
+      <input checked={true} className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="not-hatirlatici" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="not-hatirlatici">Not Hatırlatıcıları</label>
@@ -246,7 +246,7 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input readOnly className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="gunluk-ozet" type="checkbox" />
+      <input className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="gunluk-ozet" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="gunluk-ozet">Günlük Özet</label>
@@ -255,7 +255,7 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input readOnly checked={true} className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="sistem-guncelleme" type="checkbox" />
+      <input checked={true} className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="sistem-guncelleme" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="sistem-guncelleme">Sistem Güncellemeleri</label>
@@ -300,7 +300,7 @@ export function Ayarlar(props: AyarlarProps) {
       {/* Clear Data Confirmation */}
       {showConfirmClear && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div role="dialog" aria-modal="true" className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">
+          <div role="dialog" className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">
             <h2 className="font-h2 text-h2 text-error mb-2">Tüm Verileri Sil</h2>
             <p className="font-body-md text-body-md text-on-surface-variant mb-6">Tüm notlarınız ve tercihleriniz kalıcı olarak silinecek. Bu işlem geri alınamaz.</p>
             <div className="flex gap-3 justify-end">

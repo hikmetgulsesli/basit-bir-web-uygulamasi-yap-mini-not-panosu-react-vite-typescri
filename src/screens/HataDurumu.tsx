@@ -10,13 +10,13 @@
 import { useState } from "react";
 
 interface HataDurumuProps {
+  errorMessage?: string;
   onRetry: () => void;
   onBack: () => void;
-  errorMessage?: string;
 }
 
 export function HataDurumu(props: HataDurumuProps) {
-  const { onRetry, onBack, errorMessage = 'ERR_UNKNOWN: Beklenmeyen bir sorun oluştu' } = props;
+  const { errorMessage = 'ERR_UNKNOWN: Beklenmeyen bir sorun oluştu', onRetry, onBack } = props;
   return (
     <>
       {/* Error State Canvas */}
