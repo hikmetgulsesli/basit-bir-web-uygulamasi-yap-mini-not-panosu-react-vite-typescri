@@ -47,4 +47,5 @@ export interface AppState {
   searchQuery: string;
   filterTab: FilterTab;
   preferences: AppPreferences;
+  userProfile: UserProfile;
 }

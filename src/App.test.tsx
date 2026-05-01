@@ -1,10 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
+import type { AppState } from './types/domain';
 
 // Mock utils/storage to verify persistence
 const mockSaveState = vi.fn();
-const mockLoadState = vi.fn(() => null);
+const mockLoadState = vi.fn((): Partial<AppState> | null => null);
 
 vi.mock('./utils/storage', () => ({
   loadState: () => mockLoadState(),
@@ -201,6 +202,28 @@ describe('App UI', () => {
     const todoIcon = screen.getByText('radio_button_unchecked');
     fireEvent.click(todoIcon);
     expect(screen.getByText('check_circle')).toBeInTheDocument();
+  });
+
+  it('renders error state when saved state has error view', () => {
+    mockLoadState.mockReturnValue({ view: 'error' });
+    render(<App />);
+    expect(screen.getByText('Bir Sorun Oluştu')).toBeInTheDocument();
+    expect(screen.getByText('Tekrar Dene')).toBeInTheDocument();
+    expect(screen.getByText('Geri Dön')).toBeInTheDocument();
+  });
+
+  it('can navigate back from error state', () => {
+    mockLoadState.mockReturnValue({ view: 'error' });
+    render(<App />);
+    fireEvent.click(screen.getByText('Geri Dön'));
+    expect(screen.getByText('Henüz notunuz yok')).toBeInTheDocument();
+  });
+
+  it('can retry from error state', () => {
+    mockLoadState.mockReturnValue({ view: 'error' });
+    render(<App />);
+    fireEvent.click(screen.getByText('Tekrar Dene'));
+    expect(screen.getByText('Henüz notunuz yok')).toBeInTheDocument();
   });
 
   it('persists notes to storage', async () => {
