@@ -12,10 +12,11 @@ import { useState } from "react";
 interface HataDurumuProps {
   onRetry: () => void;
   onBack: () => void;
+  errorMessage?: string;
 }
 
 export function HataDurumu(props: HataDurumuProps) {
-  const { onRetry, onBack } = props;
+  const { onRetry, onBack, errorMessage } = props;
   return (
     <>
       {/* Error State Canvas */}
@@ -41,7 +42,7 @@ export function HataDurumu(props: HataDurumuProps) {
       <div className="bg-surface-container rounded-lg p-md w-full border border-outline-variant text-left">
       <p className="font-label-sm text-label-sm text-on-surface-variant mb-xs uppercase tracking-wider">Hata Detayı</p>
       <code className="font-mono text-[13px] text-error block truncate">
-                      ERR_CONNECTION_REFUSED: Failed to fetch API endpoint
+                      {errorMessage || 'ERR_UNKNOWN: Beklenmeyen bir sorun oluştu'}
                   </code>
       </div>
       {/* Action Buttons */}

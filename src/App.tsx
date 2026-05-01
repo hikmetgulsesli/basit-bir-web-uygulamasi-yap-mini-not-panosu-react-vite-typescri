@@ -150,6 +150,7 @@ export default function App() {
           <HataDurumu
             onRetry={() => setView('dashboard')}
             onBack={() => setView('dashboard')}
+            errorMessage="ERR_STORAGE: Verilere erişim sırasında bir sorun oluştu"
           />
         );
       default:
