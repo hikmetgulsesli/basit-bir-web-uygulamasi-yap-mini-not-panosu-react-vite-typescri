@@ -1,17 +1,25 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, within } from '@testing-library/react';
 import { Ayarlar } from './Ayarlar';
-import type { AppPreferences } from '../types/domain';
+import type { AppPreferences, UserProfile } from '../types/domain';
 
 const defaultPrefs: AppPreferences = {
   theme: 'dark',
   compactView: false,
 };
 
+const defaultProfile: UserProfile = {
+  displayName: 'Ahmet Yılmaz',
+  email: 'ahmet.yilmaz@sirket.com',
+  avatarUrl: 'https://example.com/avatar.png',
+};
+
 function setup(props = {}) {
   const defaultProps = {
     preferences: defaultPrefs,
+    userProfile: defaultProfile,
     onPreferencesChange: vi.fn(),
+    onUserProfileChange: vi.fn(),
     onClearData: vi.fn(),
     onBack: vi.fn(),
   };
@@ -23,6 +31,29 @@ describe('Ayarlar', () => {
     setup();
     expect(screen.getByRole('heading', { level: 1, name: 'Ayarlar' })).toBeInTheDocument();
     expect(screen.getByText(/Uygulama tercihlerinizi ve hesap verilerinizi yönetin/)).toBeInTheDocument();
+  });
+
+  it('renders account settings section', () => {
+    setup();
+    expect(screen.getByText('Hesap Ayarları', { selector: 'h2' })).toBeInTheDocument();
+    expect(screen.getByLabelText('Görünen Ad')).toBeInTheDocument();
+    expect(screen.getByLabelText('E-posta')).toBeInTheDocument();
+  });
+
+  it('calls onUserProfileChange when display name changed', () => {
+    const onUserProfileChange = vi.fn();
+    setup({ onUserProfileChange });
+    const input = screen.getByLabelText('Görünen Ad');
+    fireEvent.change(input, { target: { value: 'Mehmet Kaya' } });
+    expect(onUserProfileChange).toHaveBeenCalledWith({ displayName: 'Mehmet Kaya' });
+  });
+
+  it('calls onUserProfileChange when email changed', () => {
+    const onUserProfileChange = vi.fn();
+    setup({ onUserProfileChange });
+    const input = screen.getByLabelText('E-posta');
+    fireEvent.change(input, { target: { value: 'mehmet@example.com' } });
+    expect(onUserProfileChange).toHaveBeenCalledWith({ email: 'mehmet@example.com' });
   });
 
   it('renders appearance settings section', () => {
