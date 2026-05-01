@@ -197,7 +197,7 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="font-body-sm text-body-sm text-on-surface-variant">Notları listelerken daha az boşluk kullan.</div>
       </div>
       <label className="relative inline-flex items-center cursor-pointer">
-      <input className="sr-only peer" type="checkbox" checked={preferences.compactView} onChange={(e) => onPreferencesChange({ compactView: e.target.checked })} />
+      <input className="sr-only peer" aria-label="Kompakt Liste Görünümü" type="checkbox" checked={preferences.compactView} onChange={(e) => onPreferencesChange({ compactView: e.target.checked })} />
       <div className="w-11 h-6 bg-surface-container-highest peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary peer-focus:ring-offset-2 peer-focus:ring-offset-background rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
       </label>
       </div>
@@ -215,7 +215,7 @@ export function Ayarlar(props: AyarlarProps) {
       <div className="space-y-4">
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input checked={true} className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="not-hatirlatici" type="checkbox" />
+      <input checked={true} readOnly className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="not-hatirlatici" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="not-hatirlatici">Not Hatırlatıcıları</label>
@@ -224,7 +224,7 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="gunluk-ozet" type="checkbox" />
+      <input readOnly className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="gunluk-ozet" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="gunluk-ozet">Günlük Özet</label>
@@ -233,7 +233,7 @@ export function Ayarlar(props: AyarlarProps) {
       </div>
       <div className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant transition-colors">
       <div className="flex items-center h-6">
-      <input checked={true} className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="sistem-guncelleme" type="checkbox" />
+      <input checked={true} readOnly className="w-4 h-4 text-primary-container bg-[#1E293B] border-[#334155] rounded focus:ring-primary focus:ring-offset-background focus:ring-offset-2" id="sistem-guncelleme" type="checkbox" />
       </div>
       <div className="flex-1">
       <label className="font-label-md text-label-md text-on-surface cursor-pointer" htmlFor="sistem-guncelleme">Sistem Güncellemeleri</label>
