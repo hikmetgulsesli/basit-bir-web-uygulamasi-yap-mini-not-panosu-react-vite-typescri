@@ -92,7 +92,7 @@ export function NotDetayi(props: NotDetayiProps) {
       {/* Navigation Links */}
       <nav className="flex-1 overflow-y-auto py-unit font-inter text-sm antialiased">
       {/* Active: Notlarım */}
-      <a className="bg-blue-600/10 text-blue-500 border-r-4 border-blue-600 font-semibold px-4 py-3 flex items-center gap-3 transition-transform duration-150 ease-in-out" href="#">
+      <a className="bg-primary-container/10 text-primary border-r-4 border-primary font-semibold px-4 py-3 flex items-center gap-3 transition-transform duration-150 ease-in-out" href="#">
       <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>description</span>
                       Notlarım
                   </a>

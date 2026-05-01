@@ -97,7 +97,7 @@ export function AnaEkranDashboard(props: AnaEkranDashboardProps) {
       <div className="flex-1 overflow-y-auto py-2">
       <ul className="space-y-1 px-2">
       <li>
-      <a className="bg-blue-600/10 text-blue-500 border-r-4 border-blue-600 font-semibold px-4 py-3 flex items-center gap-3 rounded-l-md cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
+      <a className="bg-primary-container/10 text-primary border-r-4 border-primary font-semibold px-4 py-3 flex items-center gap-3 rounded-l-md cursor-pointer" href="#" onClick={(e) => e.preventDefault()}>
       <span className="material-symbols-outlined">description</span>
                               Notlarım
                           </a>
@@ -153,7 +153,7 @@ export function AnaEkranDashboard(props: AnaEkranDashboardProps) {
                       </div>
       {/* Desktop Navigation */}
       <nav className="hidden md:flex gap-6 h-16 items-center">
-      <a className="text-blue-500 border-b-2 border-blue-600 pb-1 h-full flex items-center px-1" href="#" onClick={(e) => { e.preventDefault(); }}>Dashboard</a>
+      <a className="text-primary border-b-2 border-primary pb-1 h-full flex items-center px-1" href="#" onClick={(e) => { e.preventDefault(); }}>Dashboard</a>
       <a className="text-slate-400 hover:text-slate-200 transition-colors h-full flex items-center px-1 hover:bg-slate-900/50" href="#" onClick={(e) => { e.preventDefault(); onOpenStats(); }}>İstatistikler</a>
       <a className="text-slate-400 hover:text-slate-200 transition-colors h-full flex items-center px-1 hover:bg-slate-900/50" href="#" onClick={(e) => { e.preventDefault(); onOpenSettings(); }}>Ayarlar</a>
       </nav>

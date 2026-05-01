@@ -30,7 +30,7 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       <div className="text-lg font-bold tracking-tighter text-slate-50">Mini Not Panosu</div>
       <div className="flex gap-4">
       <span className="material-symbols-outlined text-slate-400">notifications</span>
-      <span className="material-symbols-outlined text-blue-500">account_circle</span>
+      <span className="material-symbols-outlined text-primary">account_circle</span>
       </div>
       </nav>
       <div className="mt-24 p-8 flex gap-6 flex-wrap">
@@ -55,8 +55,8 @@ export function ProfilPaneli(props: ProfilPaneliProps) {
       {/* User Identity */}
       <div className="flex flex-col items-center gap-md text-center mt-md">
       <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-container-highest relative">
-      <img alt="Kullanıcı Profili" className="w-full h-full object-cover" data-alt="A professional headshot of a person looking directly at the camera. The lighting is soft and flattering, typical of a high-quality studio portrait. The background is a subtle, out-of-focus gradient. The person has a friendly, approachable expression, fitting for a corporate SaaS application avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYjSylyv_dugd8EpW6SMW_jOZS6MrmN9hZas8SyvfajLBwdpgCzDNsl9SLrwnoAWmx7mKTl9gQJ06NC-z9T5_LjNM4viRMsMHtwVRRCxxZe5WihZII2u5w4nEUNy1syBjuD7xTlh1gxOBOi38NcD9dROnKz5XU8qIOkatsA1PRtnO9SdvvbZgobfD-Jnr8WUn_sRx7w49XphY1Dd_Tc5wb32s-m9mNHqZbm1saF3TLGjeYGfgNYkO-fnAgLS-eBDzH7Y80QZisS9gr" />
-      <button className="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-colors" title="Fotoğrafı Değiştir">
+      <img alt="Kullanıcı Profili" className="w-full h-full object-cover" data-alt="A professional headshot of a person looking directly at the camera. The lighting is soft and flattering, typical of a high-quality studio portrait. The background is a subtle, out-of-focus gradient. The person has a friendly, approachable expression, fitting for a corporate SaaS application avatar." src={userProfile?.avatarUrl ?? "https://lh3.googleusercontent.com/aida-public/AB6AXuAYjSylyv_dugd8EpW6SMW_jOZS6MrmN9hZas8SyvfajLBwdpgCzDNsl9SLrwnoAWmx7mKTl9gQJ06NC-z9T5_LjNM4viRMsMHtwVRRCxxZe5WihZII2u5w4nEUNy1syBjuD7xTlh1gxOBOi38NcD9dROnKz5XU8qIOkatsA1PRtnO9SdvvbZgobfD-Jnr8WUn_sRx7w49XphY1Dd_Tc5wb32s-m9mNHqZbm1saF3TLGjeYGfgNYkO-fnAgLS-eBDzH7Y80QZisS9gr"} />
+      <button className="absolute bottom-0 right-0 w-8 h-8 bg-surface-container border border-outline-variant rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-colors" title="Fotoğrafı Değiştir" onClick={() => {}}>
       <span className="material-symbols-outlined text-[16px] text-on-surface-variant">edit</span>
       </button>
       </div>

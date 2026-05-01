@@ -89,10 +89,10 @@ export function Ayarlar(props: AyarlarProps) {
       <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
       <input className="bg-slate-900 border border-slate-800 rounded-full pl-9 pr-4 py-1.5 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 w-48 lg:w-64 text-slate-200 placeholder-slate-500 transition-all" placeholder="Notlarda ara..." type="text" />
       </div>
-      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center" aria-label="Bildirimler">
+      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center" aria-label="Bildirimler" onClick={() => {}}>
       <span className="material-symbols-outlined">notifications</span>
       </button>
-      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center" aria-label="Profil">
+      <button className="text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 p-2 rounded-full transition-colors flex items-center justify-center" aria-label="Profil" onClick={() => {}}>
       <span className="material-symbols-outlined">account_circle</span>
       </button>
       <button className="hidden sm:flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors items-center gap-2" onClick={onBack}>
@@ -300,7 +300,7 @@ export function Ayarlar(props: AyarlarProps) {
       {/* Clear Data Confirmation */}
       {showConfirmClear && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div role="dialog" className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">
+          <div role="dialog" aria-modal="true" className="bg-surface-container border border-outline-variant rounded-xl p-6 max-w-md w-full mx-4 shadow-lg">
             <h2 className="font-h2 text-h2 text-error mb-2">Tüm Verileri Sil</h2>
             <p className="font-body-md text-body-md text-on-surface-variant mb-6">Tüm notlarınız ve tercihleriniz kalıcı olarak silinecek. Bu işlem geri alınamaz.</p>
             <div className="flex gap-3 justify-end">
