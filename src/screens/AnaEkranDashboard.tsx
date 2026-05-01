@@ -220,6 +220,15 @@ export function AnaEkranDashboard(props: AnaEkranDashboardProps) {
               Aramayı Temizle
             </button>
           )}
+          {filterTab !== 'all' && (
+            <button
+              className="mt-2 px-4 py-2 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md flex items-center gap-2"
+              onClick={() => onFilterChange('all')}
+            >
+              <span className="material-symbols-outlined text-sm">filter_alt_off</span>
+              Filtreyi Temizle
+            </button>
+          )}
         </div>
       ) : (
         filteredNotes.map((note) => (

@@ -148,7 +148,7 @@ export default function App() {
       case 'error':
         return (
           <HataDurumu
-            onRetry={() => setView('dashboard')}
+            onRetry={() => { try { const saved = localStorage.getItem('app-state'); if (saved) { const parsed = JSON.parse(saved); window.location.reload(); } else { setView('dashboard'); } } catch { window.location.reload(); } }}
             onBack={() => setView('dashboard')}
             errorMessage="ERR_STORAGE: Verilere erişim sırasında bir sorun oluştu"
           />

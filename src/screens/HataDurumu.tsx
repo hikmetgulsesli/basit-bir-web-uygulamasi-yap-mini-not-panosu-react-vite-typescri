@@ -35,7 +35,9 @@ export function HataDurumu(props: HataDurumuProps) {
                       Bir Sorun Oluştu
                   </h1>
       <p className="font-body-lg text-body-lg text-on-surface-variant">
-                      Veriler yüklenirken sunucu ile iletişim kurulamadı. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.
+                      {errorMessage?.startsWith('ERR_STORAGE') 
+                        ? 'Veriler yüklenirken yerel depolama ile iletişim kurulamadı. Lütfen tarayıcı ayarlarınızı kontrol edin.'
+                        : 'Veriler yüklenirken sunucu ile iletişim kurulamadı. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.'}
                   </p>
       </div>
       {/* Technical Detail (Optional context for pro users) */}
